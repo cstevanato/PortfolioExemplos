@@ -1,14 +1,13 @@
 package com.example.portfolio.exemplos
 
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.snapshots.SnapshotStateList
-import androidx.compose.ui.Modifier
 import androidx.navigation3.runtime.EntryProviderScope
 import androidx.navigation3.runtime.NavKey
 import com.example.portfolio.exemplos.features.dragdrop.DragAndDropBoxes
 import com.example.portfolio.exemplos.features.list.ListExampleScreen
+import com.example.portfolio.exemplos.features.list.SearchBarByQueryScreen
+import com.example.portfolio.exemplos.features.list.SearchBarByStateScreen
 import com.example.portfolio.exemplos.model.ProjectModel
 import com.example.portfolio.exemplos.parameters.DetailsScreen
 import kotlinx.collections.immutable.persistentListOf
@@ -27,21 +26,28 @@ sealed class Dest : NavKey {
     @Serializable
     data object DragAndDropExample : Dest()
 
+    @Serializable
+    data object SearchByQuery : Dest()
+
+    @Serializable
+    data object SearchByState : Dest()
+
 }
 
 @Composable
 fun EntryProviderScope<Dest>.Route(
-    paddingValues: PaddingValues,
     backStack: SnapshotStateList<Dest>
 ) {
     entry<Dest.Home> {
-        HomeScreen(paddingValues = paddingValues) {
+        HomeScreen() {
             backStack.add(it)
         }
     }
     entry<Dest.Details> { key -> DetailsScreen(key.id) }
-    entry<Dest.ListsExample> { ListExampleScreen(modifier = Modifier.padding(paddingValues)) }
-    entry<Dest.DragAndDropExample> { DragAndDropBoxes(modifier = Modifier.padding(paddingValues)) }
+    entry<Dest.ListsExample> { ListExampleScreen() }
+    entry<Dest.DragAndDropExample> { DragAndDropBoxes() }
+    entry<Dest.SearchByQuery> { SearchBarByQueryScreen() }
+    entry<Dest.SearchByState> { SearchBarByStateScreen() }
 }
 
 
@@ -58,8 +64,13 @@ val projectsStateItems = persistentListOf(
         Dest.ListsExample
     ),
     ProjectModel(
-        "Example Drag and Drop.",
-        "Example Drag and Drop.",
-        Dest.DragAndDropExample
+        "Example SearchByQuery by Query.",
+        "Example SearchByQuery by Query with material 3.",
+        Dest.SearchByQuery
+    ),
+    ProjectModel(
+        "Example SearchByQuery by State.",
+        "Example SearchByQuery by State with material 3.",
+        Dest.SearchByState
     )
 )

@@ -14,6 +14,9 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -34,64 +37,72 @@ import androidx.compose.ui.unit.sp
 import kotlin.random.Random
 
 @Composable
-fun DragAndDropBoxes(modifier: Modifier = Modifier) {
-    Column(
-        modifier = modifier.fillMaxSize()
-    ) {
-        val boxCount = 5
-        var dragBoxIndex by remember { mutableStateOf(0) }
-        val colors = remember {
-            (1..boxCount).map {
-                Color(Random.nextLong()).copy(alpha = 1f)
+fun DragAndDropBoxes() {
+    Scaffold(
+        containerColor = MaterialTheme.colorScheme.primaryContainer,
+        contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
+        modifier = Modifier.fillMaxSize()
+    ) { paddingValues ->
+        Column(
+            modifier = Modifier
+                .padding(paddingValues)
+                .fillMaxSize()
+        ) {
+            val boxCount = 5
+            var dragBoxIndex by remember { mutableStateOf(0) }
+            val colors = remember {
+                (1..boxCount).map {
+                    Color(Random.nextLong()).copy(alpha = 1f)
+                }
             }
-        }
 
-        repeat(boxCount) { index ->
-            Box(
-                modifier = Modifier
-                    .weight(1f)
-                    .fillMaxWidth()
-                    .background(colors[index])
-                    .dragAndDropTarget(
-                        shouldStartDragAndDrop = { event ->
-                            event
-                                .mimeTypes()
-                                .contains(ClipDescription.MIMETYPE_TEXT_PLAIN)
-                        },
-                        target = remember {
-                            object : DragAndDropTarget {
-                                override fun onDrop(event: DragAndDropEvent): Boolean {
-                                    val text = event.toAndroidDragEvent().clipData
-                                        ?.getItemAt(0)?.text
-                                    println("Drag data was $text")
+            repeat(boxCount) { index ->
+                Box(
+                    modifier = Modifier
+                        .weight(1f)
+                        .fillMaxWidth()
+                        .background(colors[index])
+                        .dragAndDropTarget(
+                            shouldStartDragAndDrop = { event ->
+                                event
+                                    .mimeTypes()
+                                    .contains(ClipDescription.MIMETYPE_TEXT_PLAIN)
+                            },
+                            target = remember {
+                                object : DragAndDropTarget {
+                                    override fun onDrop(event: DragAndDropEvent): Boolean {
+                                        val text = event.toAndroidDragEvent().clipData
+                                            ?.getItemAt(0)?.text
+                                        println("Drag data was $text")
 
-                                    dragBoxIndex = index
-                                    return true
+                                        dragBoxIndex = index
+                                        return true
+                                    }
                                 }
                             }
-                        }
-                    ),
-                contentAlignment = Alignment.Center
-            ) {
-                this@Column.AnimatedVisibility(
-                    visible = index == dragBoxIndex,
-                    enter = scaleIn() + fadeIn(),
-                    exit = scaleOut() + fadeOut()
+                        ),
+                    contentAlignment = Alignment.Center
                 ) {
-                    Text(
-                        text = "Drag Me",
-                        fontSize = 40.sp,
-                        color = Color.White,
-                        fontWeight = FontWeight.Bold,
-                        modifier = Modifier
-                            .dragAndDropSource(
-                                transferData = { _: Offset ->
-                                    DragAndDropTransferData(
-                                        clipData = ClipData.newPlainText("text", "Drag me!")
-                                    )
-                                }
-                            )
-                    )
+                    this@Column.AnimatedVisibility(
+                        visible = index == dragBoxIndex,
+                        enter = scaleIn() + fadeIn(),
+                        exit = scaleOut() + fadeOut()
+                    ) {
+                        Text(
+                            text = "Drag Me",
+                            fontSize = 40.sp,
+                            color = Color.White,
+                            fontWeight = FontWeight.Bold,
+                            modifier = Modifier
+                                .dragAndDropSource(
+                                    transferData = { _: Offset ->
+                                        DragAndDropTransferData(
+                                            clipData = ClipData.newPlainText("text", "Drag me!")
+                                        )
+                                    }
+                                )
+                        )
+                    }
                 }
             }
         }

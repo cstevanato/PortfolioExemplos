@@ -10,8 +10,7 @@ import androidx.navigation3.ui.NavDisplay
 
 @Composable
 fun BasicNavigation(
-    paddingValues: PaddingValues
-) {
+  ) {
     val viewModel: NavigateViewModel = hiltViewModel()
     val backStack = viewModel.backStack
     NavDisplay(
@@ -22,7 +21,7 @@ fun BasicNavigation(
             rememberViewModelStoreNavEntryDecorator()
         ),
         entryProvider = entryProvider {
-            Route(paddingValues, backStack)
+            Route( backStack)
         }
     )
 }
