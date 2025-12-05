@@ -2,6 +2,7 @@ package com.example.portfolio.exemplos
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.snapshots.SnapshotStateList
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation3.runtime.EntryProviderScope
 import androidx.navigation3.runtime.NavKey
 import com.example.portfolio.exemplos.features.Search.SearchBarByQueryScreen
@@ -10,7 +11,8 @@ import com.example.portfolio.exemplos.features.dragdrop.DragAndDropBoxes
 import com.example.portfolio.exemplos.features.list.ListByCategoriesScreen
 import com.example.portfolio.exemplos.features.list.ListByImageRecompositionOptimizeScreen
 import com.example.portfolio.exemplos.model.ProjectModel
-import com.example.portfolio.exemplos.parameters.DetailsScreen
+import com.example.portfolio.exemplos.features.parameters.DetailsScreen
+import com.example.portfolio.exemplos.features.parameters.DetailsViewModel
 import kotlinx.collections.immutable.persistentListOf
 import kotlinx.serialization.Serializable
 
@@ -47,7 +49,14 @@ fun EntryProviderScope<Dest>.Route(
             backStack.add(it)
         }
     }
-    entry<Dest.Details> { key -> DetailsScreen(key.id) }
+    entry<Dest.Details> { key ->
+        val viewModel: DetailsViewModel = hiltViewModel(
+            creationCallback = { factory: DetailsViewModel.DetailsViewModelFactory ->
+                factory.create(key.id)
+            }
+        )
+        DetailsScreen(viewModel)
+    }
     entry<Dest.ListByImageRecompositionOptimize> { ListByImageRecompositionOptimizeScreen() }
     entry<Dest.DragAndDropExample> { DragAndDropBoxes() }
     entry<Dest.SearchByQuery> { SearchBarByQueryScreen() }
@@ -58,8 +67,8 @@ fun EntryProviderScope<Dest>.Route(
 
 val projectsStateItems = persistentListOf(
     ProjectModel(
-        "Example of passing parameters.",
-        "Example of passing parameters between screens using navigation 3.",
+        "Example of a route with parameter passing and viewModel with parameter too",
+        "Example of a route with parameter passing, viewModel initialization with Hilt receiving a parameter.",
         Dest.Details("Example of passing parameters.")
 
     ),

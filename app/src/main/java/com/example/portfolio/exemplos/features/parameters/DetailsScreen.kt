@@ -1,13 +1,15 @@
-package com.example.portfolio.exemplos.parameters
+package com.example.portfolio.exemplos.features.parameters
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.portfolio.exemplos.ui.theme.PortfolioExemplosTheme
 
 /**
@@ -16,17 +18,20 @@ import com.example.portfolio.exemplos.ui.theme.PortfolioExemplosTheme
  */
 
 @Composable
-fun DetailsScreen(id: String, viewModel: DetailsViewModel = hiltViewModel()) {
-    DetailsContent(id)
+fun DetailsScreen(
+    viewModel: DetailsViewModel = hiltViewModel()
+) {
+    val state by viewModel.state.collectAsStateWithLifecycle()
+    DetailsContent(state.description)
 }
 
 @Composable
-private fun DetailsContent(id: String) {
+private fun DetailsContent(description: String) {
     Box(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
     ) {
-        Text("Details: $id")
+        Text("Details: $description")
     }
 }
 
@@ -34,7 +39,7 @@ private fun DetailsContent(id: String) {
 @Preview
 fun DetailsScreenPreview() {
     PortfolioExemplosTheme {
-        DetailsScreen("123")
+        DetailsContent("123")
     }
 }
 
