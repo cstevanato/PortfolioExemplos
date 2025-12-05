@@ -4,10 +4,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.navigation3.runtime.EntryProviderScope
 import androidx.navigation3.runtime.NavKey
+import com.example.portfolio.exemplos.features.Search.SearchBarByQueryScreen
+import com.example.portfolio.exemplos.features.Search.SearchBarByStateScreen
 import com.example.portfolio.exemplos.features.dragdrop.DragAndDropBoxes
-import com.example.portfolio.exemplos.features.list.ListExampleScreen
-import com.example.portfolio.exemplos.features.list.SearchBarByQueryScreen
-import com.example.portfolio.exemplos.features.list.SearchBarByStateScreen
+import com.example.portfolio.exemplos.features.list.ListByCategoriesScreen
+import com.example.portfolio.exemplos.features.list.ListByImageRecompositionOptimizeScreen
 import com.example.portfolio.exemplos.model.ProjectModel
 import com.example.portfolio.exemplos.parameters.DetailsScreen
 import kotlinx.collections.immutable.persistentListOf
@@ -21,7 +22,10 @@ sealed class Dest : NavKey {
     data class Details(val id: String) : Dest()
 
     @Serializable
-    data object ListsExample : Dest()
+    data object ListByImageRecompositionOptimize : Dest()
+
+    @Serializable
+    data object ListByCategories : Dest()
 
     @Serializable
     data object DragAndDropExample : Dest()
@@ -44,10 +48,11 @@ fun EntryProviderScope<Dest>.Route(
         }
     }
     entry<Dest.Details> { key -> DetailsScreen(key.id) }
-    entry<Dest.ListsExample> { ListExampleScreen() }
+    entry<Dest.ListByImageRecompositionOptimize> { ListByImageRecompositionOptimizeScreen() }
     entry<Dest.DragAndDropExample> { DragAndDropBoxes() }
     entry<Dest.SearchByQuery> { SearchBarByQueryScreen() }
     entry<Dest.SearchByState> { SearchBarByStateScreen() }
+    entry<Dest.ListByCategories> { ListByCategoriesScreen() }
 }
 
 
@@ -59,9 +64,14 @@ val projectsStateItems = persistentListOf(
 
     ),
     ProjectModel(
-        "Example List With Image.",
-        "Example List With Image recompose optimize.",
-        Dest.ListsExample
+        "Example List Simple With Image.",
+        "Example List Simple  With Image recompose optimize.",
+        Dest.ListByImageRecompositionOptimize
+    ),
+    ProjectModel(
+        "Example List By Categories.",
+        "Example List By Categories",
+        Dest.ListByCategories
     ),
     ProjectModel(
         "Example SearchByQuery by Query.",

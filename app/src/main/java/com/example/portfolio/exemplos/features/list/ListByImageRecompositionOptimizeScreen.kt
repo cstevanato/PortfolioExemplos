@@ -57,7 +57,7 @@ private val images = (1..100).map {
 }
 
 @Composable
-fun ListExampleScreen() {
+fun ListByImageRecompositionOptimizeScreen() {
     Scaffold(
         containerColor = MaterialTheme.colorScheme.primaryContainer,
         contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
