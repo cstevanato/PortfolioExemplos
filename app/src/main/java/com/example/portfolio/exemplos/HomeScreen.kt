@@ -22,7 +22,7 @@ import kotlinx.collections.immutable.ImmutableList
 @Composable
 fun HomeScreen(
     state: ImmutableList<ProjectModel> = projectsStateItems,
-    onClick: (Dest) -> Unit = {}
+    onClick: (Route) -> Unit = {}
 ) {
     Scaffold(
         containerColor = MaterialTheme.colorScheme.primaryContainer,

@@ -1,9 +1,8 @@
 package com.example.portfolio.exemplos.model
 
-import androidx.compose.runtime.Immutable
-import com.example.portfolio.exemplos.Dest
+import com.example.portfolio.exemplos.Route
 
-data class ProjectModel(val name: String, val description: String, val dest: Dest)
+data class ProjectModel(val name: String, val description: String, val dest: Route)
 
 //@Immutable
 //data class UiProjectState(

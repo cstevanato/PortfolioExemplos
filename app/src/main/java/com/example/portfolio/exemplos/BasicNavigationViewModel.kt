@@ -2,11 +2,7 @@ package com.example.portfolio.exemplos
 
 import androidx.compose.runtime.mutableStateListOf
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.MutableSharedFlow
-import kotlinx.coroutines.flow.asSharedFlow
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 //sealed interface NavEvent {
@@ -20,7 +16,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class BasicNavigationViewModel @Inject constructor() : ViewModel() {
-    val backStack = mutableStateListOf<Dest>(Dest.Home)
+    val backStack = mutableStateListOf<Route>(Route.MainHome.Home)
 
 
 //    // Event bus for navigation commands
