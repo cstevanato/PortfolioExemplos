@@ -10,11 +10,12 @@ import androidx.navigation3.ui.NavDisplay
 import androidx.savedstate.serialization.SavedStateConfiguration
 import com.example.portfolio.exemplos.HomeScreen
 import com.example.portfolio.exemplos.Route
-import com.example.portfolio.exemplos.features.Search.SearchBarByQueryScreen
-import com.example.portfolio.exemplos.features.Search.SearchBarByStateScreen
+import com.example.portfolio.exemplos.features.search.SearchBarByQueryScreen
+import com.example.portfolio.exemplos.features.search.SearchBarByStateScreen
 import com.example.portfolio.exemplos.features.dragdrop.DragAndDropBoxes
 import com.example.portfolio.exemplos.features.list.ListByCategoriesScreen
 import com.example.portfolio.exemplos.features.list.ListByImageRecompositionOptimizeScreen
+import com.example.portfolio.exemplos.features.pagination.PaginationScreen
 import com.example.portfolio.exemplos.features.parameters.DetailsScreen
 import com.example.portfolio.exemplos.features.parameters.DetailsViewModel
 import kotlinx.serialization.modules.SerializersModule
@@ -83,6 +84,7 @@ fun MainNavigation(
             entry<Route.MainHome.SearchByQuery> { SearchBarByQueryScreen() }
             entry<Route.MainHome.SearchByState> { SearchBarByStateScreen() }
             entry<Route.MainHome.ListByCategories> { ListByCategoriesScreen() }
+            entry<Route.MainHome.PaginationExample> { PaginationScreen() }
         }
     )
 }
