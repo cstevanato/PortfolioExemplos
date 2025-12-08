@@ -1,5 +1,8 @@
 package com.example.portfolio.exemplos
 
+import androidx.compose.animation.ContentTransform
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.runtime.Composable
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.viewmodel.navigation3.rememberViewModelStoreNavEntryDecorator
@@ -22,6 +25,18 @@ fun BasicNavigation(
         ),
         entryProvider = entryProvider {
             Route(backStack)
+        },
+        transitionSpec = {
+            ContentTransform(
+                slideInHorizontally(initialOffsetX = { it }),
+                slideOutHorizontally(targetOffsetX = { -it })
+            )
+        },
+        popTransitionSpec = {
+            ContentTransform(
+                slideInHorizontally(initialOffsetX = { -it }),
+                slideOutHorizontally(targetOffsetX = { it })
+            )
         }
     )
 }
