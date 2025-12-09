@@ -72,7 +72,7 @@ dependencies {
     implementation(libs.androidx.material3.adaptive.navigation3)
     implementation(libs.kotlinx.serialization.core)
 
-    implementation(libs.kotlinx.collectons.immutable)
+    implementation(libs.kotlinx.collections.immutable)
 
     // hilt
     implementation(libs.androidx.hilt.navigation.compose)
