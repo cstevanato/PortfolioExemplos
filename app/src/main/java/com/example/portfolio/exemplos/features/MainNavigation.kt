@@ -19,6 +19,7 @@ import com.example.portfolio.exemplos.features.parameters.DetailsScreen
 import com.example.portfolio.exemplos.features.parameters.DetailsViewModel
 import com.example.portfolio.exemplos.features.search.SearchBarByQueryScreen
 import com.example.portfolio.exemplos.features.search.SearchBarByStateScreen
+import com.example.portfolio.exemplos.features.swipe.SwipeScreen
 import kotlinx.serialization.modules.SerializersModule
 import kotlinx.serialization.modules.polymorphic
 
@@ -91,6 +92,7 @@ fun MainNavigation(
             entry<Route.MainHome.ListByCategories> { ListByCategoriesScreen() }
             entry<Route.MainHome.PaginationExample> { PaginationScreen() }
             entry<Route.MainHome.ConnectivityExample> { ConnectivityScreen() }
+            entry<Route.MainHome.SwipeExample> { SwipeScreen() }
         }
     )
 }
