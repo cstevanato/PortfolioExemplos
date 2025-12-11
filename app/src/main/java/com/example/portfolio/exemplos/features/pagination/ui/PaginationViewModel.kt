@@ -1,12 +1,12 @@
-package com.example.portfolio.exemplos.features.pagination
+package com.example.portfolio.exemplos.features.pagination.ui
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.portfolio.exemplos.domain.pagination.ListItem
-import com.example.portfolio.exemplos.domain.pagination.PaginationUseCase
+import com.example.portfolio.exemplos.features.pagination.domain.ListItem
+import com.example.portfolio.exemplos.features.pagination.domain.PaginationUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import jakarta.inject.Inject
 import kotlinx.coroutines.launch

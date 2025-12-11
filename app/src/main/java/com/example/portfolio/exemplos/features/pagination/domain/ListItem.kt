@@ -1,4 +1,4 @@
-package com.example.portfolio.exemplos.domain.pagination
+package com.example.portfolio.exemplos.features.pagination.domain
 
 import androidx.compose.runtime.Stable
 

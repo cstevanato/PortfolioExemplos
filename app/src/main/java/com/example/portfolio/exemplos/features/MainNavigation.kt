@@ -10,14 +10,15 @@ import androidx.navigation3.ui.NavDisplay
 import androidx.savedstate.serialization.SavedStateConfiguration
 import com.example.portfolio.exemplos.HomeScreen
 import com.example.portfolio.exemplos.Route
-import com.example.portfolio.exemplos.features.search.SearchBarByQueryScreen
-import com.example.portfolio.exemplos.features.search.SearchBarByStateScreen
+import com.example.portfolio.exemplos.features.connectivity.ConnectivityScreen
 import com.example.portfolio.exemplos.features.dragdrop.DragAndDropBoxes
 import com.example.portfolio.exemplos.features.list.ListByCategoriesScreen
 import com.example.portfolio.exemplos.features.list.ListByImageRecompositionOptimizeScreen
-import com.example.portfolio.exemplos.features.pagination.PaginationScreen
+import com.example.portfolio.exemplos.features.pagination.ui.PaginationScreen
 import com.example.portfolio.exemplos.features.parameters.DetailsScreen
 import com.example.portfolio.exemplos.features.parameters.DetailsViewModel
+import com.example.portfolio.exemplos.features.search.SearchBarByQueryScreen
+import com.example.portfolio.exemplos.features.search.SearchBarByStateScreen
 import kotlinx.serialization.modules.SerializersModule
 import kotlinx.serialization.modules.polymorphic
 
@@ -53,6 +54,10 @@ fun MainNavigation(
                         Route.MainHome.SearchByState::class,
                         Route.MainHome.SearchByState.serializer()
                     )
+                    subclass(
+                        Route.MainHome.PaginationExample::class,
+                        Route.MainHome.PaginationExample.serializer()
+                    )
                 }
             }
         },
@@ -85,6 +90,7 @@ fun MainNavigation(
             entry<Route.MainHome.SearchByState> { SearchBarByStateScreen() }
             entry<Route.MainHome.ListByCategories> { ListByCategoriesScreen() }
             entry<Route.MainHome.PaginationExample> { PaginationScreen() }
+            entry<Route.MainHome.ConnectivityExample> { ConnectivityScreen() }
         }
     )
 }

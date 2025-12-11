@@ -1,7 +1,7 @@
-package com.example.portfolio.exemplos.data.pagination.repository
+package com.example.portfolio.exemplos.features.pagination.data.repository
 
-import com.example.portfolio.exemplos.domain.pagination.ListItem
-import com.example.portfolio.exemplos.domain.pagination.PaginationRepository
+import com.example.portfolio.exemplos.features.pagination.domain.ListItem
+import com.example.portfolio.exemplos.features.pagination.domain.PaginationRepository
 import kotlinx.coroutines.delay
 import javax.inject.Inject
 

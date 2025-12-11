@@ -1,7 +1,7 @@
-package com.example.portfolio.exemplos.data.pagination.di
+package com.example.portfolio.exemplos.features.pagination.data.di
 
-import com.example.portfolio.exemplos.data.pagination.repository.PaginationRepositoryImpl
-import com.example.portfolio.exemplos.domain.pagination.PaginationRepository
+import com.example.portfolio.exemplos.features.pagination.data.repository.PaginationRepositoryImpl
+import com.example.portfolio.exemplos.features.pagination.domain.PaginationRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

@@ -1,4 +1,4 @@
-package com.example.portfolio.exemplos.features.pagination
+package com.example.portfolio.exemplos.features.pagination.ui
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -22,8 +22,8 @@ import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 
 @Composable
 fun PaginationScreen(
+    modifier: Modifier = Modifier,
     viewModel: PaginationViewModel = hiltViewModel(),
-    modifier: Modifier = Modifier
 ) {
     val state = viewModel.state
     Scaffold(

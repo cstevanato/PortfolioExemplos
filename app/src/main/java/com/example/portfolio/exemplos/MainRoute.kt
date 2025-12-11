@@ -34,6 +34,8 @@ sealed interface Route : NavKey {
         @Serializable
         data object PaginationExample : Route, NavKey
 
+        @Serializable
+        data object ConnectivityExample : Route, NavKey
     }
 
     @Serializable
@@ -83,5 +85,10 @@ val projectsStateItems = persistentListOf(
         "Pagination Example.",
         "Pagination Example.",
         Route.MainHome.PaginationExample
-    )
+    ),
+    ProjectModel(
+        "Connectivity Example.",
+        "Connectivity Example.",
+        Route.MainHome.ConnectivityExample
+    ),
 )

@@ -1,4 +1,4 @@
-package com.example.portfolio.exemplos.features.pagination
+package com.example.portfolio.exemplos.features.pagination.ui
 
 
 class DefaultPaginator<Key, Item>(
