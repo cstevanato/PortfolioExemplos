@@ -18,6 +18,7 @@ import com.example.portfolio.exemplos.features.media.MediaScreen
 import com.example.portfolio.exemplos.features.pagination.ui.PaginationScreen
 import com.example.portfolio.exemplos.features.parameters.DetailsScreen
 import com.example.portfolio.exemplos.features.parameters.DetailsViewModel
+import com.example.portfolio.exemplos.features.progress.LoadingIndicatorScreen
 import com.example.portfolio.exemplos.features.search.SearchBarByQueryScreen
 import com.example.portfolio.exemplos.features.search.SearchBarByStateScreen
 import com.example.portfolio.exemplos.features.swipe.SwipeScreen
@@ -95,6 +96,7 @@ fun MainNavigation(
             entry<Route.MainHome.ConnectivityExample> { ConnectivityScreen() }
             entry<Route.MainHome.SwipeExample> { SwipeScreen() }
             entry<Route.MainHome.Media> { MediaScreen() }
+            entry<Route.MainHome.ProgressIndicator> { LoadingIndicatorScreen() }
         }
     )
 }

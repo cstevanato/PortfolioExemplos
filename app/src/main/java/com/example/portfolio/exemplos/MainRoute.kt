@@ -42,6 +42,9 @@ sealed interface Route : NavKey {
 
         @Serializable
         data object Media : Route, NavKey
+
+        @Serializable
+        data object ProgressIndicator : Route, NavKey
     }
 
     @Serializable
@@ -106,5 +109,10 @@ val projectsStateItems = persistentListOf(
         "Media Example.",
         "Media with permission compose Example.",
         Route.MainHome.Media
+    ),
+    ProjectModel(
+        "Progress Indicator Example.",
+        "Progress Indicator Example.",
+        Route.MainHome.ProgressIndicator
     )
 )
