@@ -39,6 +39,9 @@ sealed interface Route : NavKey {
 
         @Serializable
         data object SwipeExample : Route, NavKey
+
+        @Serializable
+        data object Media : Route, NavKey
     }
 
     @Serializable
@@ -98,5 +101,10 @@ val projectsStateItems = persistentListOf(
         "Swipe Example.",
         "Swipe Example.",
         Route.MainHome.SwipeExample
+    ),
+    ProjectModel(
+        "Media Example.",
+        "Media with permission compose Example.",
+        Route.MainHome.Media
     )
 )

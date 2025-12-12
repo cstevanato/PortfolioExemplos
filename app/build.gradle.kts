@@ -66,6 +66,9 @@ dependencies {
     implementation(libs.androidx.compose.material3)
     implementation(libs.androidx.compose.material.icons.extended)
 
+    implementation(libs.google.accompanist.permissions)
+    implementation(libs.coil.compose)
+
 //    implementation(libs.androidx.core.splash)
 
     // navigation3

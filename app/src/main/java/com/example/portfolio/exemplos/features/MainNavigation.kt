@@ -14,6 +14,7 @@ import com.example.portfolio.exemplos.features.connectivity.ConnectivityScreen
 import com.example.portfolio.exemplos.features.dragdrop.DragAndDropBoxes
 import com.example.portfolio.exemplos.features.list.ListByCategoriesScreen
 import com.example.portfolio.exemplos.features.list.ListByImageRecompositionOptimizeScreen
+import com.example.portfolio.exemplos.features.media.MediaScreen
 import com.example.portfolio.exemplos.features.pagination.ui.PaginationScreen
 import com.example.portfolio.exemplos.features.parameters.DetailsScreen
 import com.example.portfolio.exemplos.features.parameters.DetailsViewModel
@@ -93,6 +94,7 @@ fun MainNavigation(
             entry<Route.MainHome.PaginationExample> { PaginationScreen() }
             entry<Route.MainHome.ConnectivityExample> { ConnectivityScreen() }
             entry<Route.MainHome.SwipeExample> { SwipeScreen() }
+            entry<Route.MainHome.Media> { MediaScreen() }
         }
     )
 }
