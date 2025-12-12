@@ -24,6 +24,8 @@ coilVersion = "3.3.0"
 
 material3 = "1.5.0-alpha10"
 
+analyzerCompose = "0.6.1"
+
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -40,8 +42,6 @@ androidx-compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-
 androidx-compose-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3", version.ref = "material3" }
 androidx-compose-material-icons-extended = { group = "androidx.compose.material", name = "material-icons-extended" }
-
-
 
 kotlinx-collections-immutable = { module = "org.jetbrains.kotlinx:kotlinx-collections-immutable", version = "0.4.0" }
 
@@ -75,5 +75,5 @@ jetbrains-kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serializati
 
 dagger-hilt = { id = "com.google.dagger.hilt.android", version.ref = "dagger" }
 devtools-ksp = { id = "com.google.devtools.ksp", version.ref = "devtoolsKsp" }
-stability-analyzer = { id = "com.github.skydoves.compose.stability.analyzer", version = "0.6.0" }
+stability-analyzer = { id = "com.github.skydoves.compose.stability.analyzer", version.ref = "analyzerCompose" }
 
