@@ -70,8 +70,5 @@ fun LoadingIndicatorScreen() {
                 progress = { progress },
             )
         }
-
     }
-
-
 }
