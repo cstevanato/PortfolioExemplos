@@ -48,6 +48,7 @@ kotlin {
     compilerOptions {
         jvmTarget.set(JvmTarget.JVM_11)
         freeCompilerArgs.addAll(
+            "-XXLanguage:+PropertyParamAnnotationDefaultTargetMode",
             "-Xjvm-default=all",
             "-Xopt-in=kotlin.RequiresOptIn",
             "-Xcontext-parameters"
@@ -77,6 +78,7 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.navigation3)
     implementation(libs.androidx.material3.adaptive.navigation3)
     implementation(libs.kotlinx.serialization.core)
+    implementation(libs.androidx.compose.runtime)
 
     implementation(libs.kotlinx.collections.immutable)
 
@@ -86,6 +88,14 @@ dependencies {
     //dagger
     implementation(libs.dagger.hilt)
     ksp(libs.dagger.ksp)
+
+    // ktor
+    implementation(libs.ktor.client.core)
+    implementation(libs.ktor.client.android)
+    implementation(libs.ktor.client.serialization)
+    implementation(libs.ktor.client.content.negotiation)
+    implementation(libs.ktor.serialization.kotlinx.json)
+    implementation(libs.ktor.client.logging)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
