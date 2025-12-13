@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import com.example.portfolio.exemplos.features.errorHandling.ui.UserErrorHandlingScreen
 import com.example.portfolio.exemplos.ui.theme.PortfolioExemplosTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -15,8 +14,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             PortfolioExemplosTheme {
-                UserErrorHandlingScreen()
-//                BasicNavigation()
+                BasicNavigation()
             }
         }
     }

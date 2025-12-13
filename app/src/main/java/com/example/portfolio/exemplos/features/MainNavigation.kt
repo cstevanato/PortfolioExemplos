@@ -12,6 +12,8 @@ import com.example.portfolio.exemplos.HomeScreen
 import com.example.portfolio.exemplos.Route
 import com.example.portfolio.exemplos.features.connectivity.ConnectivityScreen
 import com.example.portfolio.exemplos.features.dragdrop.DragAndDropBoxes
+import com.example.portfolio.exemplos.features.errorHandling.ui.UserErrorHandlingScreen
+import com.example.portfolio.exemplos.features.flowTesting.ui.AddressScreen
 import com.example.portfolio.exemplos.features.list.ListByCategoriesScreen
 import com.example.portfolio.exemplos.features.list.ListByImageRecompositionOptimizeScreen
 import com.example.portfolio.exemplos.features.media.MediaScreen
@@ -97,6 +99,8 @@ fun MainNavigation(
             entry<Route.MainHome.SwipeExample> { SwipeScreen() }
             entry<Route.MainHome.Media> { MediaScreen() }
             entry<Route.MainHome.ProgressIndicator> { LoadingIndicatorScreen() }
+            entry<Route.MainHome.UserErrorHandling> { UserErrorHandlingScreen() }
+            entry<Route.MainHome.Address> { AddressScreen() }
         }
     )
 }

@@ -45,6 +45,12 @@ sealed interface Route : NavKey {
 
         @Serializable
         data object ProgressIndicator : Route, NavKey
+
+        @Serializable
+        data object UserErrorHandling : Route, NavKey
+
+        @Serializable
+        data object Address : Route, NavKey
     }
 
     @Serializable
@@ -114,5 +120,15 @@ val projectsStateItems = persistentListOf(
         "Progress Indicator Example.",
         "Progress Indicator Example.",
         Route.MainHome.ProgressIndicator
-    )
+    ),
+    ProjectModel(
+        "Error Handling Example.",
+        "Error Handling Example.",
+        Route.MainHome.UserErrorHandling
+    ),
+    ProjectModel(
+        "Address Example.",
+        "Address Example.",
+        Route.MainHome.Address
+    ),
 )
