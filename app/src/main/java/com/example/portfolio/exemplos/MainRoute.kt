@@ -51,6 +51,10 @@ sealed interface Route : NavKey {
 
         @Serializable
         data object Address : Route, NavKey
+
+        @Serializable
+        data object ButtonEffectsExample : Route, NavKey
+
     }
 
     @Serializable
@@ -155,7 +159,12 @@ val projectsStateItems = persistentListOf(
     ),
     ProjectModel(
         "Address Example.",
-        "Address Example.",
+        "Example of the find address by zip code, with suspend and flow.",
         Route.MainHome.Address
     ),
+    ProjectModel(
+        "Button Effects Example",
+        "Button Effects Example",
+        Route.MainHome.ButtonEffectsExample
+    )
 )

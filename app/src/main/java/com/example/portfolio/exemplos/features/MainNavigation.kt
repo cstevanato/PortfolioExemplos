@@ -10,6 +10,7 @@ import androidx.navigation3.ui.NavDisplay
 import androidx.savedstate.serialization.SavedStateConfiguration
 import com.example.portfolio.exemplos.HomeScreen
 import com.example.portfolio.exemplos.Route
+import com.example.portfolio.exemplos.features.buttons.ButtonEffectScreen
 import com.example.portfolio.exemplos.features.connectivity.ConnectivityScreen
 import com.example.portfolio.exemplos.features.dragdrop.DragAndDropBoxes
 import com.example.portfolio.exemplos.features.errorHandling.ui.UserErrorHandlingScreen
@@ -105,6 +106,7 @@ fun MainNavigation(
             entry<Route.MainHome.ProgressIndicator> { LoadingIndicatorScreen() }
             entry<Route.MainHome.UserErrorHandling> { UserErrorHandlingScreen() }
             entry<Route.MainHome.Address> { AddressScreen() }
+            entry<Route.MainHome.ButtonEffectsExample> { ButtonEffectScreen() }
         }
     )
 }

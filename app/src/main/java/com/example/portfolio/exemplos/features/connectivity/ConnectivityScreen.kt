@@ -2,6 +2,9 @@ package com.example.portfolio.exemplos.features.connectivity
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -14,10 +17,19 @@ import com.example.portfolio.exemplos.core.connectivity.ConnectivityObserver
 fun ConnectivityScreen(viewModel: ConnectivityViewModel = hiltViewModel()) {
     val status =
         viewModel.status.collectAsState(initial = ConnectivityObserver.Status.Unavailable)
-    Box(
-        modifier = Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
-    ) {
-        Text(text = "Status: ${status.value}")
+
+    Scaffold(
+        containerColor = MaterialTheme.colorScheme.primaryContainer,
+        contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
+        modifier = Modifier.fillMaxSize()
+    ) { paddingValues ->
+        Box(
+            modifier = Modifier
+                .padding(paddingValues)
+                .fillMaxSize(),
+            contentAlignment = Alignment.Center
+        ) {
+            Text(text = "Status: ${status.value}")
+        }
     }
 }
