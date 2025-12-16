@@ -61,9 +61,42 @@ sealed interface Route : NavKey {
         @Serializable
         data object Register : Route, NavKey
     }
+
+    @Serializable
+    data object HomeLayout : Route, NavKey {
+        @Serializable
+        data object Home: Route, NavKey
+
+        @Serializable
+        data object FlowLayout: Route, NavKey
+
+        @Serializable
+        data object CascadeLayout: Route, NavKey
+
+        @Serializable
+        data object CircularLayout: Route, NavKey
+
+        @Serializable
+        data object GridLayout : Route, NavKey
+
+        @Serializable
+        data object CustomLayout : Route, NavKey
+    }
 }
 
 val projectsStateItems = persistentListOf(
+    ProjectModel(
+        "Share viewModel and navigation for multiple nodes.",
+        "Share viewModel and navigation for multiple nodes.",
+        Route.HomeNavShare
+
+    ),
+    ProjectModel(
+        "Layouts",
+        "Layouts",
+        Route.HomeLayout
+
+    ),
     ProjectModel(
         "Example of a route with parameter passing and viewModel with parameter too",
         "Example of a route with parameter passing, viewModel initialization with Hilt receiving a parameter.",
@@ -89,12 +122,6 @@ val projectsStateItems = persistentListOf(
         "Example SearchByQuery by State.",
         "Example SearchByQuery by State with material 3.",
         Route.MainHome.SearchByState
-    ),
-    ProjectModel(
-        "Share viewModel and navigation for multiple nodes.",
-        "Share viewModel and navigation for multiple nodes.",
-        Route.HomeNavShare
-
     ),
     ProjectModel(
         "Pagination Example.",

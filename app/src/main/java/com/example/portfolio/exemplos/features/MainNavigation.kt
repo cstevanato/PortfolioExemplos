@@ -75,10 +75,14 @@ fun MainNavigation(
         entryProvider = entryProvider {
             entry<Route.MainHome.Home> {
                 HomeScreen {
-                    if (it is Route.HomeNavShare)
-                        onNavigationTo(it)
-                    else
-                        mainBackStack.add(it)
+                    when (it) {
+                        Route.HomeNavShare,
+                        Route.HomeLayout -> {
+                            onNavigationTo(it)
+                        }
+
+                        else -> mainBackStack.add(it)
+                    }
                 }
             }
             entry<Route.MainHome.Details> { key ->

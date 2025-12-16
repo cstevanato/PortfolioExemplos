@@ -12,6 +12,7 @@ import androidx.navigation3.runtime.rememberSaveableStateHolderNavEntryDecorator
 import androidx.navigation3.ui.NavDisplay
 import androidx.savedstate.serialization.SavedStateConfiguration
 import com.example.portfolio.exemplos.features.MainNavigation
+import com.example.portfolio.exemplos.features.flowlayouts.LayoutsNavigation
 import com.example.portfolio.exemplos.features.share.ShareNavigation
 import kotlinx.serialization.modules.SerializersModule
 import kotlinx.serialization.modules.polymorphic
@@ -25,8 +26,18 @@ fun BasicNavigation(
         configuration = SavedStateConfiguration {
             serializersModule = SerializersModule {
                 polymorphic(NavKey::class) {
-                    subclass(Route.MainHome::class, Route.MainHome.serializer())
-                    subclass(Route.HomeNavShare::class, Route.HomeNavShare.serializer())
+                    subclass(
+                        Route.MainHome::class,
+                        Route.MainHome.serializer()
+                    )
+                    subclass(
+                        Route.HomeNavShare::class,
+                        Route.HomeNavShare.serializer()
+                    )
+                    subclass(
+                        Route.HomeLayout::class,
+                        Route.HomeLayout.serializer()
+                    )
                 }
             }
         },
@@ -54,6 +65,13 @@ fun BasicNavigation(
                     rootBackStack.remove(Route.HomeNavShare)
                     rootBackStack.add(Route.MainHome)
                 }
+            }
+            entry<Route.HomeLayout> {
+                LayoutsNavigation()
+//                {
+//                    rootBackStack.remove(Route.HomeLayout)
+//                    rootBackStack.add(Route.MainHome)
+//                }
             }
         },
         transitionSpec = {
