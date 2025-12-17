@@ -2,6 +2,7 @@ package com.example.portfolio.exemplos.features.meditation
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -21,7 +22,6 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -55,86 +55,96 @@ import com.example.portfolio.exemplos.ui.theme.PortfolioExemplosTheme
 
 @Composable
 fun MeditationScreen(modifier: Modifier = Modifier) {
-    Scaffold(
-        containerColor = MaterialTheme.colorScheme.primaryContainer,
-        contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
-        modifier = Modifier.fillMaxSize(),
-        bottomBar = {
-            BottomMenu(
-                items = listOf(
-                    BottomMenuContent("Home", R.drawable.ic_home),
-                    BottomMenuContent("Meditate", R.drawable.ic_bubble),
-                    BottomMenuContent("Sleep", R.drawable.ic_moon),
-                    BottomMenuContent("Music", R.drawable.ic_music),
-                    BottomMenuContent("Profile", R.drawable.ic_profile),
+//    Scaffold(
+//        containerColor = MaterialTheme.colorScheme.primaryContainer,
+//        contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
+//        modifier = Modifier.fillMaxSize(),
+//        bottomBar = {
+//            BottomMenu(
+//                items = listOf(
+//                    BottomMenuContent("Home", R.drawable.ic_home),
+//                    BottomMenuContent("Meditate", R.drawable.ic_bubble),
+//                    BottomMenuContent("Sleep", R.drawable.ic_moon),
+//                    BottomMenuContent("Music", R.drawable.ic_music),
+//                    BottomMenuContent("Profile", R.drawable.ic_profile),
+//                )
+//            )
+//        },
+//
+//    ) { paddingValues ->
+
+    Box(
+        modifier = Modifier
+            .background(MaterialTheme.colorScheme.primaryContainer)
+//                .padding(paddingValues)
+            .fillMaxSize()
+    ) {
+        Column {
+            GreetingSection()
+            ChipSection(
+                chips = listOf("Sweet sleep", "Insomnia", "Depression", "Anxiety")
+            )
+            CurrentMeditation()
+            FeatureSection(
+                features = listOf(
+                    Feature(
+                        title = "Sleep meditation",
+                        iconId = R.drawable.ic_headphone,
+                        lightColor = BlueViolet1,
+                        mediumColor = BlueViolet2,
+                        darkColor = BlueViolet3
+                    ),
+                    Feature(
+                        title = "Tips for sleeping",
+                        iconId = R.drawable.ic_videocam,
+                        lightColor = LightGreen1,
+                        mediumColor = LightGreen2,
+                        darkColor = LightGreen3
+                    ),
+                    Feature(
+                        title = "Night island",
+                        iconId = R.drawable.ic_headphone,
+                        lightColor = OrangeYellow1,
+                        mediumColor = OrangeYellow2,
+                        darkColor = OrangeYellow3
+                    ),
+                    Feature(
+                        title = "Calming sounds",
+                        iconId = R.drawable.ic_headphone,
+                        lightColor = Beige1,
+                        mediumColor = Beige2,
+                        darkColor = Beige3
+                    ),
+                    Feature(
+                        title = "Night island",
+                        iconId = R.drawable.ic_headphone,
+                        lightColor = OrangeYellow1,
+                        mediumColor = OrangeYellow2,
+                        darkColor = OrangeYellow3
+                    ),
+                    Feature(
+                        title = "Calming sounds",
+                        iconId = R.drawable.ic_headphone,
+                        lightColor = Beige1,
+                        mediumColor = Beige2,
+                        darkColor = Beige3
+                    ),
                 )
             )
-        },
-
-    ) { paddingValues ->
-
-        Box(
-            modifier = Modifier
-                .background(MaterialTheme.colorScheme.primaryContainer)
-                .padding(paddingValues)
-                .fillMaxSize()
-        ) {
-            Column {
-                GreetingSection()
-                ChipSection(
-                    chips = listOf("Sweet sleep", "Insomnia", "Depression", "Anxiety")
-                )
-                CurrentMeditation()
-                FeatureSection(
-                    features = listOf(
-                        Feature(
-                            title = "Sleep meditation",
-                            iconId = R.drawable.ic_headphone,
-                            lightColor = BlueViolet1,
-                            mediumColor = BlueViolet2,
-                            darkColor = BlueViolet3
-                        ),
-                        Feature(
-                            title = "Tips for sleeping",
-                            iconId = R.drawable.ic_videocam,
-                            lightColor = LightGreen1,
-                            mediumColor = LightGreen2,
-                            darkColor = LightGreen3
-                        ),
-                        Feature(
-                            title = "Night island",
-                            iconId = R.drawable.ic_headphone,
-                            lightColor = OrangeYellow1,
-                            mediumColor = OrangeYellow2,
-                            darkColor = OrangeYellow3
-                        ),
-                        Feature(
-                            title = "Calming sounds",
-                            iconId = R.drawable.ic_headphone,
-                            lightColor = Beige1,
-                            mediumColor = Beige2,
-                            darkColor = Beige3
-                        ),
-                        Feature(
-                            title = "Night island",
-                            iconId = R.drawable.ic_headphone,
-                            lightColor = OrangeYellow1,
-                            mediumColor = OrangeYellow2,
-                            darkColor = OrangeYellow3
-                        ),
-                        Feature(
-                            title = "Calming sounds",
-                            iconId = R.drawable.ic_headphone,
-                            lightColor = Beige1,
-                            mediumColor = Beige2,
-                            darkColor = Beige3
-                        ),
-                    )
-                )
-            }
         }
+        BottomMenu(
+            items = listOf(
+                BottomMenuContent("Home", R.drawable.ic_home),
+                BottomMenuContent("Meditate", R.drawable.ic_bubble),
+                BottomMenuContent("Sleep", R.drawable.ic_moon),
+                BottomMenuContent("Music", R.drawable.ic_music),
+                BottomMenuContent("Profile", R.drawable.ic_profile),
+            ),
+            modifier = Modifier.align(Alignment.BottomCenter)
+        )
     }
 }
+//}
 
 @Composable
 fun GreetingSection(
@@ -257,7 +267,7 @@ fun FeatureSection(features: List<Feature> = listOf()) {
         )
         LazyVerticalGrid(
             columns = GridCells.Fixed(2),
-            contentPadding = PaddingValues(start = 7.5.dp, end = 7.5.dp, bottom = 15.dp),
+            contentPadding = PaddingValues(start = 7.5.dp, end = 7.5.dp, bottom = 150.dp),
             modifier = Modifier.fillMaxWidth(),
         ) {
             items(features.size) {
@@ -381,7 +391,7 @@ fun BottomMenu(
         verticalAlignment = Alignment.CenterVertically,
         modifier = modifier
             .fillMaxWidth()
-            .padding(start = 15.dp, end = 15.dp, top = 15.dp, bottom = 50.dp)
+            .background(color = MaterialTheme.colorScheme.primaryContainer)
     ) {
         items.forEachIndexed { index, item ->
             BottomMenuItem(
@@ -409,9 +419,11 @@ fun BottomMenuItem(
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
-        modifier = Modifier.clickable {
-            onItemClick()
-        }
+        modifier = Modifier
+            .clickable {
+                onItemClick()
+            }
+            .padding(top = 10.dp, bottom = 50.dp)
     ) {
         Box(
             contentAlignment = Alignment.Center,
