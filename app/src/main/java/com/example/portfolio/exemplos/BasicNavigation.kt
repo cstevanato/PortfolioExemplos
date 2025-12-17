@@ -5,44 +5,40 @@ import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.runtime.Composable
 import androidx.lifecycle.viewmodel.navigation3.rememberViewModelStoreNavEntryDecorator
-import androidx.navigation3.runtime.NavKey
 import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.navigation3.runtime.rememberSaveableStateHolderNavEntryDecorator
 import androidx.navigation3.ui.NavDisplay
-import androidx.savedstate.serialization.SavedStateConfiguration
 import com.example.portfolio.exemplos.features.MainNavigation
 import com.example.portfolio.exemplos.features.flowlayouts.LayoutsNavigation
 import com.example.portfolio.exemplos.features.share.ShareNavigation
-import kotlinx.serialization.modules.SerializersModule
-import kotlinx.serialization.modules.polymorphic
 
 @Composable
 fun BasicNavigation(
 //    viewModel: BasicNavigationViewModel = hiltViewModel()
 ) {
 
-    val rootBackStack = rememberNavBackStack(
-        configuration = SavedStateConfiguration {
-            serializersModule = SerializersModule {
-                polymorphic(NavKey::class) {
-                    subclass(
-                        Route.MainHome::class,
-                        Route.MainHome.serializer()
-                    )
-                    subclass(
-                        Route.HomeNavShare::class,
-                        Route.HomeNavShare.serializer()
-                    )
-                    subclass(
-                        Route.HomeLayout::class,
-                        Route.HomeLayout.serializer()
-                    )
-                }
-            }
-        },
-        Route.MainHome
-    )
+    val rootBackStack = rememberNavBackStack(Route.MainHome)
+//        configuration = SavedStateConfiguration {
+//            serializersModule = SerializersModule {
+//                polymorphic(NavKey::class) {
+//                    subclass(
+//                        Route.MainHome::class,
+//                        Route.MainHome.serializer()
+//                    )
+//                    subclass(
+//                        Route.HomeNavShare::class,
+//                        Route.HomeNavShare.serializer()
+//                    )
+//                    subclass(
+//                        Route.HomeLayout::class,
+//                        Route.HomeLayout.serializer()
+//                    )
+//                }
+//            }
+//        },
+//        Route.MainHome
+//    )
 
 
 //    val backStack = viewModel.backStack

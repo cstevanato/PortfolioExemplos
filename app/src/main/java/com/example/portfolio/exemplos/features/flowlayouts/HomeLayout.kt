@@ -2,17 +2,13 @@ package com.example.portfolio.exemplos.features.flowlayouts
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.navigation3.runtime.NavKey
 import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.navigation3.ui.NavDisplay
-import androidx.savedstate.serialization.SavedStateConfiguration
 import com.example.portfolio.exemplos.HomeScreen
 import com.example.portfolio.exemplos.Route
 import com.example.portfolio.exemplos.model.ProjectModel
 import kotlinx.collections.immutable.persistentListOf
-import kotlinx.serialization.modules.SerializersModule
-import kotlinx.serialization.modules.polymorphic
 
 
 @Composable
@@ -20,36 +16,36 @@ fun LayoutsNavigation(
     modifier: Modifier = Modifier,
 //    onNavigateToMainHome: () -> Unit
 ) {
-    val mainBackStack = rememberNavBackStack(
-        configuration = SavedStateConfiguration {
-            serializersModule = SerializersModule {
-                polymorphic(NavKey::class) {
-                    subclass(Route.HomeLayout.Home::class, Route.HomeLayout.Home.serializer())
-                    subclass(
-                        Route.HomeLayout.FlowLayout::class,
-                        Route.HomeLayout.FlowLayout.serializer()
-                    )
-                    subclass(
-                        Route.HomeLayout.CascadeLayout::class,
-                        Route.HomeLayout.CascadeLayout.serializer()
-                    )
-                    subclass(
-                        Route.HomeLayout.CircularLayout::class,
-                        Route.HomeLayout.CircularLayout.serializer()
-                    )
-                    subclass(
-                        Route.HomeLayout.GridLayout::class,
-                        Route.HomeLayout.GridLayout.serializer()
-                    )
-                    subclass(
-                        Route.HomeLayout.CustomLayout::class,
-                        Route.HomeLayout.CustomLayout.serializer()
-                    )
-                }
-            }
-        },
-        Route.HomeLayout.Home
-    )
+    val mainBackStack = rememberNavBackStack(Route.HomeLayout.Home)
+//        configuration = SavedStateConfiguration {
+//            serializersModule = SerializersModule {
+//                polymorphic(NavKey::class) {
+//                    subclass(Route.HomeLayout.Home::class, Route.HomeLayout.Home.serializer())
+//                    subclass(
+//                        Route.HomeLayout.FlowLayout::class,
+//                        Route.HomeLayout.FlowLayout.serializer()
+//                    )
+//                    subclass(
+//                        Route.HomeLayout.CascadeLayout::class,
+//                        Route.HomeLayout.CascadeLayout.serializer()
+//                    )
+//                    subclass(
+//                        Route.HomeLayout.CircularLayout::class,
+//                        Route.HomeLayout.CircularLayout.serializer()
+//                    )
+//                    subclass(
+//                        Route.HomeLayout.GridLayout::class,
+//                        Route.HomeLayout.GridLayout.serializer()
+//                    )
+//                    subclass(
+//                        Route.HomeLayout.CustomLayout::class,
+//                        Route.HomeLayout.CustomLayout.serializer()
+//                    )
+//                }
+//            }
+//        },
+//        Route.HomeLayout.Home
+//    )
 
     NavDisplay(
         backStack = mainBackStack,

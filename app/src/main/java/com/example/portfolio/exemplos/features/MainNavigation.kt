@@ -3,11 +3,9 @@ package com.example.portfolio.exemplos.features
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
-import androidx.navigation3.runtime.NavKey
 import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.navigation3.ui.NavDisplay
-import androidx.savedstate.serialization.SavedStateConfiguration
 import com.example.portfolio.exemplos.HomeScreen
 import com.example.portfolio.exemplos.Route
 import com.example.portfolio.exemplos.features.buttons.ButtonEffectScreen
@@ -25,8 +23,6 @@ import com.example.portfolio.exemplos.features.progress.LoadingIndicatorScreen
 import com.example.portfolio.exemplos.features.search.SearchBarByQueryScreen
 import com.example.portfolio.exemplos.features.search.SearchBarByStateScreen
 import com.example.portfolio.exemplos.features.swipe.SwipeScreen
-import kotlinx.serialization.modules.SerializersModule
-import kotlinx.serialization.modules.polymorphic
 
 
 @Composable
@@ -34,41 +30,41 @@ fun MainNavigation(
     modifier: Modifier = Modifier,
     onNavigationTo: (Route) -> Unit
 ) {
-    val mainBackStack = rememberNavBackStack(
-        configuration = SavedStateConfiguration {
-            serializersModule = SerializersModule {
-                polymorphic(NavKey::class) {
-                    subclass(Route.MainHome.Home::class, Route.MainHome.Home.serializer())
-                    subclass(Route.MainHome.Details::class, Route.MainHome.Details.serializer())
-                    subclass(
-                        Route.MainHome.ListByImageRecompositionOptimize::class,
-                        Route.MainHome.ListByImageRecompositionOptimize.serializer()
-                    )
-                    subclass(
-                        Route.MainHome.ListByCategories::class,
-                        Route.MainHome.ListByCategories.serializer()
-                    )
-                    subclass(
-                        Route.MainHome.DragAndDropExample::class,
-                        Route.MainHome.DragAndDropExample.serializer()
-                    )
-                    subclass(
-                        Route.MainHome.SearchByQuery::class,
-                        Route.MainHome.SearchByQuery.serializer()
-                    )
-                    subclass(
-                        Route.MainHome.SearchByState::class,
-                        Route.MainHome.SearchByState.serializer()
-                    )
-                    subclass(
-                        Route.MainHome.PaginationExample::class,
-                        Route.MainHome.PaginationExample.serializer()
-                    )
-                }
-            }
-        },
-        Route.MainHome.Home
-    )
+    val mainBackStack = rememberNavBackStack(Route.MainHome.Home)
+//        configuration = SavedStateConfiguration {
+//            serializersModule = SerializersModule {
+//                polymorphic(NavKey::class) {
+//                    subclass(Route.MainHome.Home::class, Route.MainHome.Home.serializer())
+//                    subclass(Route.MainHome.Details::class, Route.MainHome.Details.serializer())
+//                    subclass(
+//                        Route.MainHome.ListByImageRecompositionOptimize::class,
+//                        Route.MainHome.ListByImageRecompositionOptimize.serializer()
+//                    )
+//                    subclass(
+//                        Route.MainHome.ListByCategories::class,
+//                        Route.MainHome.ListByCategories.serializer()
+//                    )
+//                    subclass(
+//                        Route.MainHome.DragAndDropExample::class,
+//                        Route.MainHome.DragAndDropExample.serializer()
+//                    )
+//                    subclass(
+//                        Route.MainHome.SearchByQuery::class,
+//                        Route.MainHome.SearchByQuery.serializer()
+//                    )
+//                    subclass(
+//                        Route.MainHome.SearchByState::class,
+//                        Route.MainHome.SearchByState.serializer()
+//                    )
+//                    subclass(
+//                        Route.MainHome.PaginationExample::class,
+//                        Route.MainHome.PaginationExample.serializer()
+//                    )
+//                }
+//            }
+//        },
+//        Route.MainHome.Home
+//    )
 
     NavDisplay(
         backStack = mainBackStack,

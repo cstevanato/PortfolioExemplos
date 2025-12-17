@@ -9,82 +9,82 @@ import kotlinx.serialization.Serializable
 sealed interface Route : NavKey {
 
     @Serializable
-    data object MainHome : Route, NavKey {
+    data object MainHome : Route  {
         @Serializable
-        data object Home : Route, NavKey
+        data object Home : Route
 
         @Serializable
-        data class Details(val id: String) : Route, NavKey
+        data class Details(val id: String) : Route
 
         @Serializable
-        data object ListByImageRecompositionOptimize : Route, NavKey
+        data object ListByImageRecompositionOptimize : Route
 
         @Serializable
-        data object ListByCategories : Route, NavKey
+        data object ListByCategories : Route
 
         @Serializable
-        data object DragAndDropExample : Route, NavKey
+        data object DragAndDropExample : Route
 
         @Serializable
-        data object SearchByQuery : Route, NavKey
+        data object SearchByQuery : Route
 
         @Serializable
-        data object SearchByState : Route, NavKey
+        data object SearchByState : Route
 
         @Serializable
-        data object PaginationExample : Route, NavKey
+        data object PaginationExample : Route
 
         @Serializable
-        data object ConnectivityExample : Route, NavKey
+        data object ConnectivityExample : Route
 
         @Serializable
-        data object SwipeExample : Route, NavKey
+        data object SwipeExample : Route
 
         @Serializable
-        data object Media : Route, NavKey
+        data object Media : Route
 
         @Serializable
-        data object ProgressIndicator : Route, NavKey
+        data object ProgressIndicator : Route
 
         @Serializable
-        data object UserErrorHandling : Route, NavKey
+        data object UserErrorHandling : Route
 
         @Serializable
-        data object Address : Route, NavKey
+        data object Address : Route
 
         @Serializable
-        data object ButtonEffectsExample : Route, NavKey
+        data object ButtonEffectsExample : Route
 
     }
 
     @Serializable
-    data object HomeNavShare : Route, NavKey {
+    data object HomeNavShare : Route {
         @Serializable
-        data object Share : Route, NavKey
+        data object Share : Route
 
         @Serializable
-        data object Register : Route, NavKey
+        data object Register : Route
     }
 
     @Serializable
-    data object HomeLayout : Route, NavKey {
+    data object HomeLayout : Route {
         @Serializable
-        data object Home: Route, NavKey
+        data object Home: Route
 
         @Serializable
-        data object FlowLayout: Route, NavKey
+        data object FlowLayout: Route
 
         @Serializable
-        data object CascadeLayout: Route, NavKey
+        data object CascadeLayout: Route
 
         @Serializable
-        data object CircularLayout: Route, NavKey
+        data object CircularLayout: Route
 
         @Serializable
-        data object GridLayout : Route, NavKey
+        data object GridLayout : Route
 
         @Serializable
-        data object CustomLayout : Route, NavKey
+        data object CustomLayout : Route
     }
 }
 
