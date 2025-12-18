@@ -7,4 +7,5 @@ plugins {
     alias(libs.plugins.devtools.ksp) apply false
     alias(libs.plugins.dagger.hilt) apply false
     alias(libs.plugins.stability.analyzer) apply false
+    id("com.google.gms.google-services") version "4.4.4" apply false
 }

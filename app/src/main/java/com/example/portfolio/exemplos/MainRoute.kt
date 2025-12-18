@@ -9,7 +9,7 @@ import kotlinx.serialization.Serializable
 sealed interface Route : NavKey {
 
     @Serializable
-    data object MainHome : Route  {
+    data object MainHome : Route {
         @Serializable
         data object Home : Route
 
@@ -55,6 +55,9 @@ sealed interface Route : NavKey {
         @Serializable
         data object ButtonEffectsExample : Route
 
+        @Serializable
+        data object Meditation : Route
+
     }
 
     @Serializable
@@ -67,18 +70,30 @@ sealed interface Route : NavKey {
     }
 
     @Serializable
+    data object HomeAuth : Route {
+        @Serializable
+        data object Home : Route
+
+        @Serializable
+        data object Login : Route
+
+        @Serializable
+        data object SignUp : Route
+    }
+
+    @Serializable
     data object HomeLayout : Route {
         @Serializable
-        data object Home: Route
+        data object Home : Route
 
         @Serializable
-        data object FlowLayout: Route
+        data object FlowLayout : Route
 
         @Serializable
-        data object CascadeLayout: Route
+        data object CascadeLayout : Route
 
         @Serializable
-        data object CircularLayout: Route
+        data object CircularLayout : Route
 
         @Serializable
         data object GridLayout : Route
@@ -93,13 +108,16 @@ val projectsStateItems = persistentListOf(
         "Share viewModel and navigation for multiple nodes.",
         "Share viewModel and navigation for multiple nodes.",
         Route.HomeNavShare
-
     ),
     ProjectModel(
         "Layouts",
         "Layouts",
         Route.HomeLayout
-
+    ),
+    ProjectModel(
+        name = "Authentication",
+        description = "Authentication",
+        dest = Route.HomeAuth
     ),
     ProjectModel(
         "Example of a route with parameter passing and viewModel with parameter too",
@@ -166,5 +184,10 @@ val projectsStateItems = persistentListOf(
         "Button Effects Example",
         "Button Effects Example",
         Route.MainHome.ButtonEffectsExample
+    ),
+    ProjectModel(
+        "Meditation App",
+        "Meditation App",
+        Route.MainHome.Meditation
     )
 )

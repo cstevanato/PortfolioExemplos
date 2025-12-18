@@ -16,6 +16,7 @@ import com.example.portfolio.exemplos.features.flowTesting.ui.AddressScreen
 import com.example.portfolio.exemplos.features.list.ListByCategoriesScreen
 import com.example.portfolio.exemplos.features.list.ListByImageRecompositionOptimizeScreen
 import com.example.portfolio.exemplos.features.media.MediaScreen
+import com.example.portfolio.exemplos.features.meditation.MeditationScreen
 import com.example.portfolio.exemplos.features.pagination.ui.PaginationScreen
 import com.example.portfolio.exemplos.features.parameters.DetailsScreen
 import com.example.portfolio.exemplos.features.parameters.DetailsViewModel
@@ -73,6 +74,7 @@ fun MainNavigation(
             entry<Route.MainHome.Home> {
                 HomeScreen {
                     when (it) {
+                        Route.HomeAuth,
                         Route.HomeNavShare,
                         Route.HomeLayout -> {
                             onNavigationTo(it)
@@ -103,6 +105,7 @@ fun MainNavigation(
             entry<Route.MainHome.UserErrorHandling> { UserErrorHandlingScreen() }
             entry<Route.MainHome.Address> { AddressScreen() }
             entry<Route.MainHome.ButtonEffectsExample> { ButtonEffectScreen() }
+            entry<Route.MainHome.Meditation> { MeditationScreen() }
         }
     )
 }

@@ -10,6 +10,7 @@ import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.navigation3.runtime.rememberSaveableStateHolderNavEntryDecorator
 import androidx.navigation3.ui.NavDisplay
 import com.example.portfolio.exemplos.features.MainNavigation
+import com.example.portfolio.exemplos.features.authentication.AuthNavigation
 import com.example.portfolio.exemplos.features.flowlayouts.LayoutsNavigation
 import com.example.portfolio.exemplos.features.share.ShareNavigation
 
@@ -52,7 +53,6 @@ fun BasicNavigation(
         entryProvider = entryProvider {
             entry<Route.MainHome> {
                 MainNavigation {
-//                    rootBackStack.remove(Route.MainHome)
                     rootBackStack.add(it)
                 }
             }
@@ -64,10 +64,12 @@ fun BasicNavigation(
             }
             entry<Route.HomeLayout> {
                 LayoutsNavigation()
-//                {
-//                    rootBackStack.remove(Route.HomeLayout)
-//                    rootBackStack.add(Route.MainHome)
-//                }
+            }
+            entry<Route.HomeAuth> {
+                AuthNavigation {
+                    rootBackStack.remove(Route.HomeAuth)
+                    rootBackStack.add(Route.MainHome)
+                }
             }
         },
         transitionSpec = {

@@ -1,4 +1,6 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import java.io.FileInputStream
+import java.util.Properties
 
 plugins {
     alias(libs.plugins.android.application)
@@ -9,6 +11,11 @@ plugins {
     alias(libs.plugins.devtools.ksp)
     alias(libs.plugins.stability.analyzer)
 }
+
+val localPropertiesFile = rootProject.file("local.properties")
+val localProperties = Properties()
+localProperties.load(FileInputStream(localPropertiesFile))
+
 
 android {
     namespace = "com.example.portfolio.exemplos"
@@ -24,6 +31,14 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+//        multiDexEnabled = true
+
+        buildConfigField("String", "FIREBASE_API_KEY", localProperties.getProperty("FIREBASE_API_KEY", "\"\""))
+        buildConfigField("String", "FIREBASE_PROJECT_ID", localProperties.getProperty("FIREBASE_PROJECT_ID", "\"\""))
+        buildConfigField("String", "FIREBASE_GCM_SENDER_ID", localProperties.getProperty("FIREBASE_GCM_SENDER_ID", "\"\""))
+        buildConfigField("String", "FIREBASE_STORAGE_BUCKET", localProperties.getProperty("FIREBASE_STORAGE_BUCKET", "\"\""))
+        buildConfigField("String", "FIREBASE_APP_ID", localProperties.getProperty("FIREBASE_APP_ID", "\"\""))
+
     }
 
     buildTypes {
@@ -40,6 +55,7 @@ android {
         targetCompatibility = JavaVersion.VERSION_11
     }
     buildFeatures {
+        buildConfig = true
         compose = true
     }
 }
@@ -70,7 +86,13 @@ dependencies {
     implementation(libs.google.accompanist.permissions)
     implementation(libs.coil.compose)
 
+//    implementation(libs.androidx.multidex)
+
 //    implementation(libs.androidx.core.splash)
+
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.analytics)
+    implementation(libs.firebase.auth)
 
     // navigation3
     implementation(libs.androidx.navigation3.ui)
