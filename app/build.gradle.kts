@@ -31,7 +31,7 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-//        multiDexEnabled = true
+        multiDexEnabled = true
 
         buildConfigField("String", "FIREBASE_API_KEY", localProperties.getProperty("FIREBASE_API_KEY", "\"\""))
         buildConfigField("String", "FIREBASE_PROJECT_ID", localProperties.getProperty("FIREBASE_PROJECT_ID", "\"\""))
@@ -86,7 +86,7 @@ dependencies {
     implementation(libs.google.accompanist.permissions)
     implementation(libs.coil.compose)
 
-//    implementation(libs.androidx.multidex)
+    implementation(libs.androidx.multidex)
 
 //    implementation(libs.androidx.core.splash)
 

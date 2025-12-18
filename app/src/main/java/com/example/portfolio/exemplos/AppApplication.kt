@@ -1,12 +1,12 @@
 package com.example.portfolio.exemplos
 
-import android.app.Application
+import androidx.multidex.MultiDexApplication
 import com.google.firebase.FirebaseApp
 import com.google.firebase.FirebaseOptions
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
-class AppApplication : Application() {
+class AppApplication : MultiDexApplication() {
     override fun onCreate() {
         super.onCreate()
 
