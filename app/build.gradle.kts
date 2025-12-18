@@ -1,3 +1,4 @@
+import com.google.firebase.appdistribution.gradle.firebaseAppDistribution
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import java.io.FileInputStream
 import java.util.Properties
@@ -10,12 +11,14 @@ plugins {
     alias(libs.plugins.dagger.hilt)
     alias(libs.plugins.devtools.ksp)
     alias(libs.plugins.stability.analyzer)
+    id("com.google.firebase.appdistribution")
 }
 
 val localPropertiesFile = rootProject.file("local.properties")
 val localProperties = Properties()
 localProperties.load(FileInputStream(localPropertiesFile))
 
+val _appId = localProperties.getProperty("FIREBASE_APP_ID").replace("\"", "")
 
 android {
     namespace = "com.example.portfolio.exemplos"
@@ -48,6 +51,13 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+//            firebaseAppDistribution {
+//                serviceCredentialsFile = "$rootDir/keys/my-project-portifolio-481618-544f85c5d63c.json"
+//            }
+        }
+        debug {
+            isMinifyEnabled = false
+            isTestCoverageEnabled = true
         }
     }
     compileOptions {
@@ -58,6 +68,19 @@ android {
         buildConfig = true
         compose = true
     }
+    flavorDimensions += "version"
+    productFlavors {
+        create("demo") {
+            dimension = "version"
+            firebaseAppDistribution {
+                appId = _appId
+                releaseNotes = "Release notes for demo version"
+                groups = "DevTesters"
+            }
+        }
+
+    }
+
 }
 kotlin {
     jvmToolchain(11)
