@@ -35,7 +35,6 @@ object NetworkModule {
     @Singleton
     fun provideHttpClient(
         json: Json,
-//        navigationEventBus: NavigationEventBusInterface
     ): HttpClient {
         return HttpClient(Android) {
             install(ContentNegotiation) {
@@ -53,47 +52,9 @@ object NetworkModule {
                 socketTimeoutMillis = 15000
             }
 
-//            // Interceptor para tratar erros Exemplo: 401, 400
-//            install(HttpCallValidator) {
-//                httpValidateResponse(navigationEventBus)
-//                exceptionResponse(navigationEventBus)
-//            }
-
             defaultRequest {
                 header("Content-Type", "application/json")
             }
         }
     }
 }
-
-//private fun HttpCallValidatorConfig.exceptionResponse(navigationEventBus: NavigationEventBusInterface) {
-//    handleResponseExceptionWithRequest { exception, _ ->
-//        when (exception) {
-//            is ClientRequestException -> {
-//                when (exception.response.status.value) {
-//                    400, 401 -> {
-//                        CoroutineScope(Dispatchers.Main).launch {
-//                            navigationEventBus.emitEvent(NavigationEvent.NavigateToHome)
-//                        }
-//                    }
-//
-//                    else -> Unit
-//                }
-//            }
-//        }
-//    }
-//}
-//
-//private fun HttpCallValidatorConfig.httpValidateResponse(navigationEventBus: NavigationEventBusInterface) {
-//    validateResponse { response ->
-//        when (response.status.value) {
-//            400, 401 -> {
-//                CoroutineScope(Dispatchers.Main).launch {
-//                    navigationEventBus.emitEvent(NavigationEvent.NavigateToHome)
-//                }
-//            }
-//
-//            else -> Unit
-//        }
-//    }
-//}
