@@ -36,11 +36,11 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled = true
 
-        buildConfigField("String", "FIREBASE_API_KEY", localProperties.getProperty("FIREBASE_API_KEY", "\"\""))
-        buildConfigField("String", "FIREBASE_PROJECT_ID", localProperties.getProperty("FIREBASE_PROJECT_ID", "\"\""))
-        buildConfigField("String", "FIREBASE_GCM_SENDER_ID", localProperties.getProperty("FIREBASE_GCM_SENDER_ID", "\"\""))
-        buildConfigField("String", "FIREBASE_STORAGE_BUCKET", localProperties.getProperty("FIREBASE_STORAGE_BUCKET", "\"\""))
-        buildConfigField("String", "FIREBASE_APP_ID", localProperties.getProperty("FIREBASE_APP_ID", "\"\""))
+        buildConfigField("String", "FIREBASE_API_KEY", localProperties.getProperty("FIREBASE_API_KEY", ""))
+        buildConfigField("String", "FIREBASE_PROJECT_ID", localProperties.getProperty("FIREBASE_PROJECT_ID", ""))
+        buildConfigField("String", "FIREBASE_GCM_SENDER_ID", localProperties.getProperty("FIREBASE_GCM_SENDER_ID", ""))
+        buildConfigField("String", "FIREBASE_STORAGE_BUCKET", localProperties.getProperty("FIREBASE_STORAGE_BUCKET", ""))
+        buildConfigField("String", "FIREBASE_APP_ID", localProperties.getProperty("FIREBASE_APP_ID", ""))
 
     }
 

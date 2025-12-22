@@ -1,8 +1,11 @@
 package com.example.portfolio.exemplos
 
 import androidx.compose.animation.ContentTransform
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideOutHorizontally
+import androidx.compose.animation.togetherWith
 import androidx.compose.runtime.Composable
 import androidx.lifecycle.viewmodel.navigation3.rememberViewModelStoreNavEntryDecorator
 import androidx.navigation3.runtime.entryProvider
@@ -73,17 +76,29 @@ fun BasicNavigation(
             }
         },
         transitionSpec = {
-            ContentTransform(
-                slideInHorizontally(initialOffsetX = { it }),
-                slideOutHorizontally(targetOffsetX = { -it })
-            )
+            slideInHorizontally { it } + fadeIn() togetherWith
+                    slideOutHorizontally { -it } + fadeOut()
         },
         popTransitionSpec = {
-            ContentTransform(
-                slideInHorizontally(initialOffsetX = { -it }),
-                slideOutHorizontally(targetOffsetX = { it })
-            )
-        }
+            slideInHorizontally { -it } + fadeIn() togetherWith
+                    slideOutHorizontally { it } + fadeOut()
+        },
+        predictivePopTransitionSpec = {
+            slideInHorizontally { -it } + fadeIn() togetherWith
+                    slideOutHorizontally { it } + fadeOut()
+        },
+//        transitionSpec = {
+//            ContentTransform(
+//                slideInHorizontally(initialOffsetX = { it }),
+//                slideOutHorizontally(targetOffsetX = { -it })
+//            )
+//        },
+//        popTransitionSpec = {
+//            ContentTransform(
+//                slideInHorizontally(initialOffsetX = { -it }),
+//                slideOutHorizontally(targetOffsetX = { it })
+//            )
+//        }
     )
 }
 
