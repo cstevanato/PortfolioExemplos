@@ -135,6 +135,8 @@ dependencies {
     implementation(libs.dagger.hilt)
     ksp(libs.dagger.ksp)
 
+    implementation("network.chaintech:compose-multiplatform-media-player:1.0.50")
+
     // ktor
     implementation(libs.ktor.client.core)
     implementation(libs.ktor.client.android)
