@@ -4,3 +4,6 @@
 - Jetpack Compose: https://developer.android.com/jetpack/compose
 - Jetpack Compose Navigation 3: https://developer.android.com/guide/navigation/navigation-3
 
+
+# Other tools
+REC software: https://screen.studio/?aff=bl7gdn

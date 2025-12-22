@@ -12,6 +12,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.portfolio.exemplos.ui.theme.PortfolioExemplosTheme
 import com.example.portfolio.exemplos.ui.theme.elevation
@@ -19,7 +20,11 @@ import com.example.portfolio.exemplos.ui.theme.spacing
 
 
 @Composable
-fun CardMenu(model: CardModel, modifier: Modifier = Modifier, onClick: () -> Unit) {
+fun CardMenu(
+    model: CardModel,
+    modifier: Modifier = Modifier,
+    onClick: () -> Unit
+) {
     Card(
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.secondary,
@@ -37,9 +42,17 @@ fun CardMenu(model: CardModel, modifier: Modifier = Modifier, onClick: () -> Uni
                 .fillMaxWidth()
                 .padding(MaterialTheme.spacing.card.inside),
         ) {
-            Text(text = model.title, style = MaterialTheme.typography.bodyLarge)
+            Text(
+                text = model.title,
+                style = MaterialTheme.typography.bodyLarge,
+                modifier = Modifier.testTag("card_menu_title")
+            )
             Spacer(modifier = Modifier.height(MaterialTheme.spacing.text.between))
-            Text(text = model.description, style = MaterialTheme.typography.bodySmall)
+            Text(
+                text = model.description,
+                style = MaterialTheme.typography.bodySmall,
+                modifier = Modifier.testTag("card_menu_description")
+            )
         }
     }
 }

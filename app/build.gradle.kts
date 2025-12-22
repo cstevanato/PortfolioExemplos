@@ -12,6 +12,7 @@ plugins {
     alias(libs.plugins.devtools.ksp)
     alias(libs.plugins.stability.analyzer)
     alias(libs.plugins.firebase.appdistribution)
+//    alias(libs.plugins.screenshot)
 }
 
 val localPropertiesFile = rootProject.file("local.properties")
@@ -51,9 +52,6 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-//            firebaseAppDistribution {
-//                serviceCredentialsFile = "$rootDir/keys/my-project-portifolio-481618-544f85c5d63c.json"
-//            }
         }
         debug {
             isMinifyEnabled = false
@@ -61,8 +59,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     buildFeatures {
         buildConfig = true
@@ -80,12 +78,13 @@ android {
         }
 
     }
-
+//    experimentalProperties["android.experimental.enableScreenshotTest"] = true
 }
+
 kotlin {
-    jvmToolchain(11)
+    jvmToolchain(17)
     compilerOptions {
-        jvmTarget.set(JvmTarget.JVM_11)
+        jvmTarget.set(JvmTarget.JVM_17)
         freeCompilerArgs.addAll(
             "-XXLanguage:+PropertyParamAnnotationDefaultTargetMode",
             "-Xjvm-default=all",
@@ -110,6 +109,8 @@ dependencies {
     implementation(libs.coil.compose)
 
     implementation(libs.androidx.multidex)
+
+//    implementation(libs.kotlin.metadata.jvm)
 
 //    implementation(libs.androidx.core.splash)
 
@@ -149,4 +150,7 @@ dependencies {
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
+
+//    screenshotTestImplementation(libs.androidx.compose.ui.tooling)
+//    screenshotTestImplementation(libs.screenshot.validation.api)
 }

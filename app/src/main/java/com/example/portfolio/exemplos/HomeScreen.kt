@@ -14,6 +14,7 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.portfolio.exemplos.components.CardMenu
 import com.example.portfolio.exemplos.components.CardModel
@@ -55,9 +56,13 @@ fun HomeScreen(
                 key = { index -> state[index].name }
             ) { index ->
                 val project = state[index]
+                val key = project.name.replace("\\W+".toRegex(), "_")
+                println("Claudio")
+                println("key: item_projects_$key")
                 CardMenu(
                     model = CardModel(project.name, project.description),
                     modifier = Modifier
+                        .testTag("item_projects_$key")
                         .padding(horizontal = MaterialTheme.spacing.card.horizontal)
                         .padding(vertical = MaterialTheme.spacing.card.between),
                 ) {
@@ -70,7 +75,7 @@ fun HomeScreen(
 
 @Composable
 @Preview
-fun HomeScreenPreview() {
+private fun HomeScreenPreview() {
     PortfolioExemplosTheme {
         HomeScreen()
     }
@@ -78,7 +83,7 @@ fun HomeScreenPreview() {
 
 @Composable
 @Preview(uiMode = UI_MODE_NIGHT_YES)
-fun HomeScreenDarkPreview() {
+private fun HomeScreenDarkPreview() {
     PortfolioExemplosTheme {
         HomeScreen()
     }
