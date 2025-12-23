@@ -21,7 +21,7 @@ import chaintech.videoplayer.ui.video.VideoPlayerComposable
 import com.example.portfolio.exemplos.R
 
 @Composable
-fun VideosScreen(modifier: Modifier = Modifier) {
+fun VideosForOnboardingScreen(modifier: Modifier = Modifier) {
 
     val playerHost =
         remember { MediaPlayerHost(mediaUrl = "android.resource://" + "com.example.portfolio.exemplos" + "/" + R.raw.screen1) }

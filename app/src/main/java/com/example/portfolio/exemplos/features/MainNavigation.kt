@@ -24,6 +24,7 @@ import com.example.portfolio.exemplos.features.progress.LoadingIndicatorScreen
 import com.example.portfolio.exemplos.features.search.SearchBarByQueryScreen
 import com.example.portfolio.exemplos.features.search.SearchBarByStateScreen
 import com.example.portfolio.exemplos.features.swipe.SwipeScreen
+import com.example.portfolio.exemplos.features.videos.VideosForOnboardingScreen
 
 
 @Composable
@@ -106,6 +107,7 @@ fun MainNavigation(
             entry<Route.MainHome.Address> { AddressScreen() }
             entry<Route.MainHome.ButtonEffectsExample> { ButtonEffectScreen() }
             entry<Route.MainHome.Meditation> { MeditationScreen() }
+            entry<Route.MainHome.VideoForOnboarding> { VideosForOnboardingScreen() }
         }
     )
 }

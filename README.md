@@ -7,3 +7,5 @@
 
 # Other tools
 REC software: https://screen.studio/?aff=bl7gdn
+
+- Expressive catalog: https://github.com/meticha/material-3-expressive-catalog

@@ -14,6 +14,7 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.portfolio.exemplos.components.CardMenu
@@ -30,17 +31,18 @@ fun HomeScreen(
     state: ImmutableList<ProjectModel> = projectsStateItems,
     onClick: (Route) -> Unit = {}
 ) {
+    val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior()
     Scaffold(
-        containerColor = MaterialTheme.colorScheme.primaryContainer,
         contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
             TopAppBar(
+                scrollBehavior = scrollBehavior,
                 title = {
                     Text(text = "Exemplos")
                 },
                 colors = TopAppBarDefaults.topAppBarColors (
-                    containerColor = MaterialTheme.colorScheme.primaryContainer,
+
                     titleContentColor = MaterialTheme.colorScheme.onPrimaryContainer,
                 )
             )
