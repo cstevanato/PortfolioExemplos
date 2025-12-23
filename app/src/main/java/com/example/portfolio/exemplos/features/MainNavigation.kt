@@ -8,6 +8,7 @@ import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.navigation3.ui.NavDisplay
 import com.example.portfolio.exemplos.HomeScreen
 import com.example.portfolio.exemplos.Route
+import com.example.portfolio.exemplos.features.bottomsheets.BottomSheetsScreen
 import com.example.portfolio.exemplos.features.buttons.ButtonEffectScreen
 import com.example.portfolio.exemplos.features.connectivity.ConnectivityScreen
 import com.example.portfolio.exemplos.features.dragdrop.DragAndDropBoxes
@@ -108,6 +109,7 @@ fun MainNavigation(
             entry<Route.MainHome.ButtonEffectsExample> { ButtonEffectScreen() }
             entry<Route.MainHome.Meditation> { MeditationScreen() }
             entry<Route.MainHome.VideoForOnboarding> { VideosForOnboardingScreen() }
+            entry<Route.MainHome.BottomSheets> { BottomSheetsScreen() }
         }
     )
 }

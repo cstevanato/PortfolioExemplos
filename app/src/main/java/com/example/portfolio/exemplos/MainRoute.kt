@@ -61,6 +61,8 @@ sealed interface Route : NavKey {
         @Serializable
         data object VideoForOnboarding : Route
 
+        @Serializable
+        data object BottomSheets : Route
     }
 
     @Serializable
@@ -197,5 +199,10 @@ val projectsStateItems = persistentListOf(
         "Video For Onboarding",
         "Video For Onboarding",
         Route.MainHome.VideoForOnboarding
+    ),
+    ProjectModel(
+        "Bottom Sheets",
+        "Bottom Sheets",
+        Route.MainHome.BottomSheets
     )
 )
