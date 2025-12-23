@@ -1,5 +1,11 @@
 package com.example.portfolio.exemplos.features
 
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideOutHorizontally
+import androidx.compose.animation.togetherWith
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
@@ -110,6 +116,18 @@ fun MainNavigation(
             entry<Route.MainHome.Meditation> { MeditationScreen() }
             entry<Route.MainHome.VideoForOnboarding> { VideosForOnboardingScreen() }
             entry<Route.MainHome.BottomSheets> { BottomSheetsScreen() }
-        }
+        },
+        transitionSpec = {
+            slideInHorizontally { it } + fadeIn() togetherWith
+                    slideOutHorizontally { -it } + fadeOut()
+        },
+        popTransitionSpec = {
+            slideInHorizontally { -it } + fadeIn() togetherWith
+                    slideOutHorizontally { it } + fadeOut()
+        },
+        predictivePopTransitionSpec = {
+            slideInHorizontally { -it } + fadeIn() togetherWith
+                    slideOutHorizontally { it } + fadeOut()
+        },
     )
 }
