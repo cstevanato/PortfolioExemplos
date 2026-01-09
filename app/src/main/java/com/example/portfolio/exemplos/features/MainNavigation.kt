@@ -1,11 +1,11 @@
 package com.example.portfolio.exemplos.features
 
-import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.animation.togetherWith
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
@@ -22,6 +22,7 @@ import com.example.portfolio.exemplos.features.errorHandling.ui.UserErrorHandlin
 import com.example.portfolio.exemplos.features.flowTesting.ui.AddressScreen
 import com.example.portfolio.exemplos.features.list.ListByCategoriesScreen
 import com.example.portfolio.exemplos.features.list.ListByImageRecompositionOptimizeScreen
+import com.example.portfolio.exemplos.features.loading.LoadingConcatScreen
 import com.example.portfolio.exemplos.features.media.MediaScreen
 import com.example.portfolio.exemplos.features.meditation.MeditationScreen
 import com.example.portfolio.exemplos.features.pagination.ui.PaginationScreen
@@ -116,6 +117,11 @@ fun MainNavigation(
             entry<Route.MainHome.Meditation> { MeditationScreen() }
             entry<Route.MainHome.VideoForOnboarding> { VideosForOnboardingScreen() }
             entry<Route.MainHome.BottomSheets> { BottomSheetsScreen() }
+            entry<Route.MainHome.LoadingCustom> {
+                LoadingConcatScreen(
+                    modifier = Modifier.fillMaxSize()
+                )
+            }
         },
         transitionSpec = {
             slideInHorizontally { it } + fadeIn() togetherWith

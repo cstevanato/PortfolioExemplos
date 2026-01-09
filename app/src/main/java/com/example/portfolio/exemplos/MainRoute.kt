@@ -63,6 +63,9 @@ sealed interface Route : NavKey {
 
         @Serializable
         data object BottomSheets : Route
+
+        @Serializable
+        data object LoadingCustom : Route
     }
 
     @Serializable
@@ -204,5 +207,10 @@ val projectsStateItems = persistentListOf(
         "Bottom Sheets",
         "Bottom Sheets",
         Route.MainHome.BottomSheets
+    ),
+    ProjectModel(
+        "Loading Custom",
+        "Loading Custom",
+        Route.MainHome.LoadingCustom
     )
 )
