@@ -156,6 +156,8 @@ dependencies {
     implementation(libs.dagger.hilt)
     ksp(libs.dagger.ksp)
 
+    ksp(libs.kotlin.metadata.jvm)
+
     implementation(libs.compose.multiplatform.media.player)
 
     // ktor
