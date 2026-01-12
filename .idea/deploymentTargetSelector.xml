@@ -16,6 +16,9 @@
       <SelectionState runConfigName="navDisplay_navigatesToPagination_andBackToHome()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
+      <SelectionState runConfigName="LineChartPreview">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
     </selectionStates>
   </component>
 </project>

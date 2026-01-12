@@ -28,8 +28,8 @@ import androidx.navigation3.runtime.NavKey
 import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.navigation3.ui.NavDisplay
-import com.example.portfolio.exemplos.features.kotlinConf.test01
-import com.example.portfolio.exemplos.features.loading.LoadingConcatScreen
+
+import com.example.portfolio.exemplos.features.tab.TabSwipable
 import com.example.portfolio.exemplos.ui.theme.PortfolioExemplosTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -47,10 +47,11 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        test01()
+//+        test01()
         setContent {
             PortfolioExemplosTheme {
-                BasicNavigation()
+                TabSwipable()
+//                BasicNavigation()
 //                NavigateTest()
             }
         }
