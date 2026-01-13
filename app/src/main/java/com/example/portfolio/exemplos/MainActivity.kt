@@ -30,6 +30,7 @@ import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.navigation3.ui.NavDisplay
 import com.example.portfolio.exemplos.features.animation.AnimationScreen
 import com.example.portfolio.exemplos.features.animation.AnimationsListScreen
+import com.example.portfolio.exemplos.features.animation.ExampleScreen
 
 import com.example.portfolio.exemplos.features.tab.TabSwipable
 import com.example.portfolio.exemplos.ui.theme.PortfolioExemplosTheme
@@ -52,7 +53,8 @@ class MainActivity : ComponentActivity() {
 //+        test01()
         setContent {
             PortfolioExemplosTheme {
-                AnimationsListScreen()
+                ExampleScreen()
+//                AnimationsListScreen()
 //                AnimationScreen()
 //                TabSwipable()
 //                BasicNavigation()
