@@ -1,6 +1,5 @@
 package com.example.portfolio.exemplos
 
-import AnimatedCircularProgressIndicatorScreen
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -30,11 +29,6 @@ import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.navigation3.ui.NavDisplay
 import com.example.portfolio.exemplos.features.animation.AnimatedCircularProgressScreen
-import com.example.portfolio.exemplos.features.animation.AnimationScreen
-import com.example.portfolio.exemplos.features.animation.AnimationsListScreen
-import com.example.portfolio.exemplos.features.animation.ExampleScreen
-
-import com.example.portfolio.exemplos.features.tab.TabSwipable
 import com.example.portfolio.exemplos.ui.theme.PortfolioExemplosTheme
 import dagger.hilt.android.AndroidEntryPoint
 
