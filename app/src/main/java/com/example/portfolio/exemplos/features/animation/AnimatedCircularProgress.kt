@@ -14,17 +14,19 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.key
+import androidx.compose.runtime.mutableFloatStateOf
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -34,32 +36,34 @@ import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.semantics.ProgressBarRangeInfo
+import androidx.compose.ui.semantics.progressBarRangeInfo
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.example.portfolio.exemplos.ui.theme.PortfolioExemplosTheme
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 import kotlin.math.roundToInt
 
 @Composable
 fun AnimatedCircularProgress(
-    progress: Float,                 // alvo entre 0f..1f
-    durationMillis: Int = 2000,      // tempo da animação
+    progress: Float,
     modifier: Modifier = Modifier,
+    durationMillis: Int = 2000,
     trackColor: Color = Color.LightGray,
     progressColor: Color = Color(0xFF3F51B5),
     strokeWidth: Dp = 12.dp,
     startAngle: Float = -90f,
     showLabel: Boolean = true,
-    onAnimationEnd: () -> Unit = {}  // HOF chamado ao finalizar
+    onAnimationEnd: () -> Unit = {}
 ) {
     val clampedTarget = progress.coerceIn(0f, 1f)
+    // Inicializa com 0f. Se quiser que comece já no progresso ao renderizar pela primeira vez,
+    // mude para initialValue = clampedTarget (mas perderá a animação inicial de entrada)
     val animated = remember { Animatable(0f) }
     val latestOnEnd by rememberUpdatedState(onAnimationEnd)
 
     LaunchedEffect(clampedTarget, durationMillis) {
-        // Evita disparar callback se já estiver no alvo
         if (animated.value == clampedTarget) return@LaunchedEffect
 
         val result = animated.animateTo(
@@ -71,24 +75,35 @@ fun AnimatedCircularProgress(
         )
 
         if (result.endReason == AnimationEndReason.Finished) {
-            // Garante que chegou ao alvo antes de chamar
-            if (animated.value == clampedTarget) {
-                latestOnEnd()
-            }
+            latestOnEnd()
         }
     }
 
-    Box(modifier = modifier, contentAlignment = Alignment.Center) {
-        Canvas(modifier = Modifier.matchParentSize()) {
+    Box(
+        // Adiciona semântica para leitores de tela
+        modifier = modifier
+            .semantics {
+                progressBarRangeInfo = ProgressBarRangeInfo(
+                    current = animated.value,
+                    range = 0f..1f
+                )
+            },
+        contentAlignment = Alignment.Center
+    ) {
+        Canvas(modifier = Modifier.fillMaxSize()) {
             val strokePx = strokeWidth.toPx()
-            val diameter = size.minDimension
+
+            // CORREÇÃO: Subtrair o strokePx para evitar corte nas bordas
+            // O diâmetro deve ser o menor lado MENOS a espessura da linha
+            val diameter = size.minDimension - strokePx
+
             val topLeft = Offset(
                 (size.width - diameter) / 2f,
                 (size.height - diameter) / 2f
             )
             val arcSize = Size(diameter, diameter)
 
-            // Trilho
+            // Trilho (Fundo)
             drawArc(
                 color = trackColor,
                 startAngle = 0f,
@@ -99,11 +114,12 @@ fun AnimatedCircularProgress(
                 style = Stroke(width = strokePx, cap = StrokeCap.Round)
             )
 
-            // Progresso
+            // Progresso (Frente)
             drawArc(
                 color = progressColor,
                 startAngle = startAngle,
-                sweepAngle = animated.value * 360f,
+                // Evita desenhar nada se for 0, para não ficar um ponto estranho se cap=Round
+                sweepAngle = (animated.value * 360f).coerceAtLeast(0.1f),
                 useCenter = false,
                 topLeft = topLeft,
                 size = arcSize,
@@ -114,7 +130,8 @@ fun AnimatedCircularProgress(
         if (showLabel) {
             Text(
                 text = "${(animated.value * 100).roundToInt()}%",
-                style = MaterialTheme.typography.bodyMedium
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurface // Garante contraste
             )
         }
     }
@@ -137,64 +154,83 @@ fun AnimatedCircularProgressPreview() {
 
 @Composable
 fun AnimatedCircularProgressScreen() {
-    var targetProgress by remember { mutableStateOf(0f) }
-    var durationMillis by remember { mutableStateOf(1500) }
-    val scope = rememberCoroutineScope()
+    // Estado do progresso alvo (ex: 0.8f, 0.5f, etc)
+    var targetProgress by remember { mutableFloatStateOf(0f) }
 
-    Surface(modifier = Modifier.fillMaxSize()) {
+    // Estado da duração
+    var durationMillis by remember { mutableIntStateOf(1500) }
+
+    // Chave para forçar a recriação do componente (Reiniciar)
+    var restartKey by remember { mutableIntStateOf(0) }
+
+    Surface(
+        modifier = Modifier.fillMaxSize(),
+        color = MaterialTheme.colorScheme.background
+    ) {
         Column(
             modifier = Modifier.fillMaxSize(),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Box(modifier = Modifier.size(300.dp), contentAlignment = Alignment.Center) {
-                AnimatedCircularProgress(
-                    progress = targetProgress,
-                    durationMillis = durationMillis,
-                    modifier = Modifier.size(140.dp),
-                    trackColor = Color(0xFFE0E0E0),
-                    progressColor = Color(0xFF26A69A),
-                    strokeWidth = 10.dp
-                ) {
-                    println("fim da animação")
+
+                // O segredo está aqui: key(restartKey)
+                // Sempre que 'restartKey' mudar, o Compose descarta o AnimatedCircularProgress
+                // antigo e cria um novo. O novo nasce com valor 0 e anima até o targetProgress.
+                key(restartKey) {
+                    AnimatedCircularProgress(
+                        progress = targetProgress,
+                        durationMillis = durationMillis,
+                        modifier = Modifier.size(140.dp),
+                        trackColor = Color(0xFFE0E0E0),
+                        progressColor = Color(0xFF26A69A),
+                        strokeWidth = 10.dp,
+                        onAnimationEnd = {
+                            println("Fim da animação")
+                        }
+                    )
                 }
             }
 
-            Spacer(Modifier.height(16.dp))
+            Spacer(Modifier.height(32.dp))
 
-            Row {
-                // Iniciar animação até 0.8
-                Button(onClick = {
-                    scope.launch {
-                        // Se quiser reexecutar mesmo que já esteja em 0.8, force um reset:
-                        targetProgress = 0f
-                        // aguarda um frame para recompor antes de iniciar
-                        delay(16)
-                        targetProgress = 0.8f
-                    }
-                }) {
-                    Text("Iniciar")
+            // --- CONTROLES ---
+
+            Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                // Botão: Definir valor e animar (comportamento padrão)
+                Button(onClick = { targetProgress = 0.8f }) {
+                    Text("Ir para 80%")
                 }
 
-                Spacer(Modifier.width(12.dp))
+                // Botão: REINICIAR (A mágica acontece aqui)
+                Button(
+                    onClick = {
+                        // 1. Garante que o alvo é o desejado (caso esteja em 0)
+                        if (targetProgress == 0f) targetProgress = 0.8f
 
-                // Resetar para 0
-                Button(onClick = {
-                    targetProgress = 0f
-                }) {
-                    Text("Resetar")
+                        // 2. Incrementa a chave para forçar a recriação do componente
+                        restartKey++
+                    },
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = MaterialTheme.colorScheme.secondary
+                    )
+                ) {
+                    Text("Reiniciar")
                 }
             }
 
             Spacer(Modifier.height(12.dp))
 
-            Row {
-                // Exemplo: alterar duração da animação
-                Button(onClick = { durationMillis = 1000 }) { Text("1s") }
-                Spacer(Modifier.width(8.dp))
-                Button(onClick = { durationMillis = 2000 }) { Text("2s") }
-                Spacer(Modifier.width(8.dp))
-                Button(onClick = { durationMillis = 3500 }) { Text("3.5s") }
+            Button(onClick = { targetProgress = 0f }) {
+                Text("Zerar (Animado)")
+            }
+
+            Spacer(Modifier.height(24.dp))
+
+            Text("Duração: ${durationMillis}ms")
+            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                OutlinedButton(onClick = { durationMillis = 1000 }) { Text("1s") }
+                OutlinedButton(onClick = { durationMillis = 2000 }) { Text("2s") }
             }
         }
     }
