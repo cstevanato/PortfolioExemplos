@@ -53,7 +53,7 @@ fun AnimatedCircularProgress(
     trackColor: Color = Color.LightGray,
     progressColor: Color = Color(0xFF3F51B5),
     strokeWidth: Dp = 12.dp,
-    startAngle: Float = -90f,
+    startAngle: Float = -180f,
     showLabel: Boolean = true,
     onAnimationEnd: () -> Unit = {}
 ) {

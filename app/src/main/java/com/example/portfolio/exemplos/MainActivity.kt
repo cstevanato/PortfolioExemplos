@@ -29,6 +29,8 @@ import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.navigation3.ui.NavDisplay
 import com.example.portfolio.exemplos.features.animation.AnimatedCircularProgressScreen
+import com.example.portfolio.exemplos.features.animation.AnimatedSemiCircularProgress
+import com.example.portfolio.exemplos.features.animation.SemiCircleScreen
 import com.example.portfolio.exemplos.ui.theme.PortfolioExemplosTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -49,8 +51,9 @@ class MainActivity : ComponentActivity() {
 //+        test01()
         setContent {
             PortfolioExemplosTheme {
+                SemiCircleScreen()
 //                AnimatedCircularProgressIndicatorScreen()
-                AnimatedCircularProgressScreen()
+//                AnimatedCircularProgressScreen()
 //                ExampleScreen()
 //                AnimationsListScreen()
 //                AnimationScreen()
