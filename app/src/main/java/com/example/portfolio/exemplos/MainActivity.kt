@@ -31,6 +31,7 @@ import androidx.navigation3.ui.NavDisplay
 import com.example.portfolio.exemplos.features.animation.AnimatedCircularProgressScreen
 import com.example.portfolio.exemplos.features.animation.AnimatedSemiCircularProgress
 import com.example.portfolio.exemplos.features.animation.SemiCircleScreen
+import com.example.portfolio.exemplos.features.animation.SnakeSquareScreen
 import com.example.portfolio.exemplos.ui.theme.PortfolioExemplosTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -51,7 +52,8 @@ class MainActivity : ComponentActivity() {
 //+        test01()
         setContent {
             PortfolioExemplosTheme {
-                SemiCircleScreen()
+                SnakeSquareScreen()
+//                SemiCircleScreen()
 //                AnimatedCircularProgressIndicatorScreen()
 //                AnimatedCircularProgressScreen()
 //                ExampleScreen()
