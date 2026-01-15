@@ -36,20 +36,30 @@ import com.example.portfolio.exemplos.ui.theme.PortfolioExemplosTheme
 import kotlin.math.min
 
 @Composable
-fun ExampleScreen() {
+fun SpendingScreen() {
     // Exemplo: total 1000, gasto 320
     Surface(modifier = Modifier.fillMaxSize())
     {
         Box(modifier = Modifier
             .fillMaxWidth()
             .padding(vertical = 20.dp)) {
-            SpendingBar(
-                total = 1000f,
-                spent = 920f, // >= 90% ficará vermelho
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(16.dp)
-            )
+            Column() {
+                SpendingBar(
+                    total = 1000f,
+                    spent = 920f, // >= 90% ficará vermelho
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(16.dp)
+                )
+                Spacer(modifier = Modifier.height(20.dp))
+                SpendingBar(
+                    total = 1000f,
+                    spent = 300f, // >= 90% ficará vermelho
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(16.dp)
+                )
+            }
         }
     }
 }

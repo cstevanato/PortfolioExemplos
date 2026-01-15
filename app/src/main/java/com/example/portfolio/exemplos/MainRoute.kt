@@ -66,6 +66,27 @@ sealed interface Route : NavKey {
 
         @Serializable
         data object LoadingCustom : Route
+
+        @Serializable
+        data object SnakeSquareScreen: Route
+
+        @Serializable
+        data object SemiCircleScreen: Route
+
+        @Serializable
+        data object AnimatedCircularProgressScreen : Route
+
+        @Serializable
+        data object SpendingScreen : Route
+
+        @Serializable
+        data object AnimationsListScreen : Route
+
+        @Serializable
+        data object AnimationScreen : Route
+
+        @Serializable
+        data object TabSwipable : Route
     }
 
     @Serializable
@@ -212,5 +233,40 @@ val projectsStateItems = persistentListOf(
         "Loading Custom",
         "Loading Custom",
         Route.MainHome.LoadingCustom
+    ),
+    ProjectModel(
+        "SnakeSquareScreen",
+        "SnakeSquareScreen",
+        Route.MainHome.SnakeSquareScreen
+    ),
+    ProjectModel(
+        "SemiCircleScreen",
+        "SemiCircleScreen",
+        Route.MainHome.SemiCircleScreen
+    ),
+    ProjectModel(
+        "AnimatedCircularProgressScreen",
+        "AnimatedCircularProgressScreen",
+        Route.MainHome.AnimatedCircularProgressScreen
+    ),
+    ProjectModel(
+        "SpendingScreen",
+        "SpendingScreen",
+        Route.MainHome.SpendingScreen
+    ),
+    ProjectModel(
+        "AnimationsListScreen",
+        "AnimationsListScreen",
+        Route.MainHome.AnimationsListScreen
+    ),
+    ProjectModel(
+        "AnimationScreen",
+        "AnimationScreen",
+        Route.MainHome.AnimationScreen
+    ),
+    ProjectModel(
+        "TabSwipable",
+        "TabSwipable",
+        Route.MainHome.TabSwipable
     )
 )

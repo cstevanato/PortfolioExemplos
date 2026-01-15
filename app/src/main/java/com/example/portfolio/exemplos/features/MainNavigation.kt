@@ -14,6 +14,12 @@ import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.navigation3.ui.NavDisplay
 import com.example.portfolio.exemplos.HomeScreen
 import com.example.portfolio.exemplos.Route
+import com.example.portfolio.exemplos.features.animation.AnimatedCircularProgressScreen
+import com.example.portfolio.exemplos.features.animation.AnimationScreen
+import com.example.portfolio.exemplos.features.animation.AnimationsListScreen
+import com.example.portfolio.exemplos.features.animation.SemiCircleScreen
+import com.example.portfolio.exemplos.features.animation.SnakeSquareScreen
+import com.example.portfolio.exemplos.features.animation.SpendingScreen
 import com.example.portfolio.exemplos.features.bottomsheets.BottomSheetsScreen
 import com.example.portfolio.exemplos.features.buttons.ButtonEffectScreen
 import com.example.portfolio.exemplos.features.connectivity.ConnectivityScreen
@@ -32,6 +38,7 @@ import com.example.portfolio.exemplos.features.progress.LoadingIndicatorScreen
 import com.example.portfolio.exemplos.features.search.SearchBarByQueryScreen
 import com.example.portfolio.exemplos.features.search.SearchBarByStateScreen
 import com.example.portfolio.exemplos.features.swipe.SwipeScreen
+import com.example.portfolio.exemplos.features.tab.TabSwipable
 import com.example.portfolio.exemplos.features.videos.VideosForOnboardingScreen
 
 
@@ -122,6 +129,15 @@ fun MainNavigation(
                     modifier = Modifier.fillMaxSize()
                 )
             }
+            entry<Route.MainHome.SnakeSquareScreen> { SnakeSquareScreen() }
+            entry<Route.MainHome.SemiCircleScreen> { SemiCircleScreen() }
+            entry<Route.MainHome.AnimatedCircularProgressScreen> {
+                AnimatedCircularProgressScreen()
+            }
+            entry<Route.MainHome.SpendingScreen> { SpendingScreen() }
+            entry<Route.MainHome.AnimationsListScreen> { AnimationsListScreen() }
+            entry<Route.MainHome.AnimationScreen> { AnimationScreen() }
+            entry<Route.MainHome.TabSwipable> { TabSwipable() }
         },
         transitionSpec = {
             slideInHorizontally { it } + fadeIn() togetherWith
