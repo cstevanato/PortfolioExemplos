@@ -28,6 +28,8 @@ import androidx.navigation3.runtime.NavKey
 import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.navigation3.ui.NavDisplay
+import com.example.portfolio.exemplos.features.chart.LineChartScreen
+import com.example.portfolio.exemplos.features.stableImmutable.StableScreen
 import com.example.portfolio.exemplos.ui.theme.PortfolioExemplosTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -49,7 +51,9 @@ class MainActivity : ComponentActivity() {
 //+        test01()
         setContent {
             PortfolioExemplosTheme {
-                BasicNavigation()
+                StableScreen()
+//                LineChartScreen()
+//                BasicNavigation()
 //                NavigateTest()
             }
         }

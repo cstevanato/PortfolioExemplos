@@ -135,6 +135,9 @@ dependencies {
 
 //    implementation(libs.androidx.core.splash)
 
+    implementation(libs.chart.vico)
+    implementation(libs.chart.vico.m)
+
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.analytics)
     implementation(libs.firebase.auth)
