@@ -5,7 +5,6 @@ import java.util.Properties
 
 plugins {
     alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.jetbrains.kotlin.serialization)
     alias(libs.plugins.dagger.hilt)
@@ -23,9 +22,7 @@ val _appId = localProperties.getProperty("FIREBASE_APP_ID").replace("\"", "")
 
 android {
     namespace = "com.example.portfolio.exemplos"
-    compileSdk {
-        version = release(36)
-    }
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.example.portfolio.exemplos"
@@ -35,7 +32,7 @@ android {
         versionName = "2.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        multiDexEnabled = true
+//        multiDexEnabled = true
 
         buildConfigField(
             "String",
@@ -129,7 +126,7 @@ dependencies {
     implementation(libs.google.accompanist.permissions)
     implementation(libs.coil.compose)
 
-    implementation(libs.androidx.multidex)
+//    implementation(libs.androidx.multidex)
 
 //    implementation(libs.kotlin.metadata.jvm)
 
