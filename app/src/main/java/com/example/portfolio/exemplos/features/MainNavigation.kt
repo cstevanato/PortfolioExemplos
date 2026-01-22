@@ -37,6 +37,8 @@ import com.example.portfolio.exemplos.features.parameters.DetailsViewModel
 import com.example.portfolio.exemplos.features.progress.LoadingIndicatorScreen
 import com.example.portfolio.exemplos.features.search.SearchBarByQueryScreen
 import com.example.portfolio.exemplos.features.search.SearchBarByStateScreen
+import com.example.portfolio.exemplos.features.slider.SliderScreen
+import com.example.portfolio.exemplos.features.stableImmutable.StableScreen
 import com.example.portfolio.exemplos.features.swipe.SwipeScreen
 import com.example.portfolio.exemplos.features.tab.TabSwipable
 import com.example.portfolio.exemplos.features.videos.VideosForOnboardingScreen
@@ -138,6 +140,8 @@ fun MainNavigation(
             entry<Route.MainHome.AnimationsListScreen> { AnimationsListScreen() }
             entry<Route.MainHome.AnimationScreen> { AnimationScreen() }
             entry<Route.MainHome.TabSwipable> { TabSwipable() }
+            entry<Route.MainHome.StableTest> { StableScreen() }
+            entry<Route.MainHome.SliderExample> { SliderScreen() }
         },
         transitionSpec = {
             slideInHorizontally { it } + fadeIn() togetherWith

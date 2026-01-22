@@ -87,6 +87,12 @@ sealed interface Route : NavKey {
 
         @Serializable
         data object TabSwipable : Route
+
+        @Serializable
+        data object StableTest : Route
+
+        @Serializable
+        data object SliderExample : Route
     }
 
     @Serializable
@@ -268,5 +274,16 @@ val projectsStateItems = persistentListOf(
         "TabSwipable",
         "TabSwipable",
         Route.MainHome.TabSwipable
+    ),
+    ProjectModel(
+        "StableTest",
+        "StableTest",
+        Route.MainHome.StableTest
+    ),
+    ProjectModel(
+        "Slider",
+        "Slider",
+        Route.MainHome.SliderExample
     )
+
 )

@@ -28,8 +28,6 @@ import androidx.navigation3.runtime.NavKey
 import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.navigation3.ui.NavDisplay
-import com.example.portfolio.exemplos.features.chart.LineChartScreen
-import com.example.portfolio.exemplos.features.stableImmutable.StableScreen
 import com.example.portfolio.exemplos.ui.theme.PortfolioExemplosTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -51,9 +49,7 @@ class MainActivity : ComponentActivity() {
 //+        test01()
         setContent {
             PortfolioExemplosTheme {
-                StableScreen()
-//                LineChartScreen()
-//                BasicNavigation()
+                BasicNavigation()
 //                NavigateTest()
             }
         }
@@ -132,8 +128,13 @@ private fun NavigateTest() {
 }
 
 @Composable
-fun ContentOrange(string: String,  content: @Composable () -> Unit) {
-    Box(modifier = Modifier.fillMaxSize().background(Color.Yellow), contentAlignment = Alignment.Center ) {
+fun ContentOrange(string: String, content: @Composable () -> Unit) {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color.Yellow),
+        contentAlignment = Alignment.Center
+    ) {
         Column() {
             Text(text = string)
             content()
@@ -142,8 +143,13 @@ fun ContentOrange(string: String,  content: @Composable () -> Unit) {
 }
 
 @Composable
-fun ContentMauve(string: String,  content: @Composable () -> Unit) {
-    Box(modifier = Modifier.fillMaxSize().background(Color.Red), contentAlignment = Alignment.Center ) {
+fun ContentMauve(string: String, content: @Composable () -> Unit) {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color.Red),
+        contentAlignment = Alignment.Center
+    ) {
         Column() {
             Text(text = string)
             content()
@@ -153,7 +159,12 @@ fun ContentMauve(string: String,  content: @Composable () -> Unit) {
 
 @Composable
 fun ContentGreen(string: String) {
-    Box(modifier = Modifier.fillMaxSize().background(Color.Green), contentAlignment = Alignment.Center ) {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color.Green),
+        contentAlignment = Alignment.Center
+    ) {
         Column() {
             Text(text = string)
         }
