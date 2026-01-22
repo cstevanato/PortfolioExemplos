@@ -15,8 +15,10 @@ import androidx.navigation3.ui.NavDisplay
 import com.example.portfolio.exemplos.HomeScreen
 import com.example.portfolio.exemplos.Route
 import com.example.portfolio.exemplos.features.animation.AnimatedCircularProgressScreen
+import com.example.portfolio.exemplos.features.animation.AnimatedGradientBackgroundCore
 import com.example.portfolio.exemplos.features.animation.AnimationScreen
 import com.example.portfolio.exemplos.features.animation.AnimationsListScreen
+import com.example.portfolio.exemplos.features.animation.MovingGradientBackgroundCore
 import com.example.portfolio.exemplos.features.animation.SemiCircleScreen
 import com.example.portfolio.exemplos.features.animation.SnakeSquareScreen
 import com.example.portfolio.exemplos.features.animation.SpendingScreen
@@ -142,6 +144,13 @@ fun MainNavigation(
             entry<Route.MainHome.TabSwipable> { TabSwipable() }
             entry<Route.MainHome.StableTest> { StableScreen() }
             entry<Route.MainHome.SliderExample> { SliderScreen() }
+            entry<Route.MainHome.AnimatedGradientBackground> {
+                AnimatedGradientBackgroundCore(modifier = Modifier.fillMaxSize())
+            }
+            entry<Route.MainHome.MovingGradientBackground> {
+                MovingGradientBackgroundCore(modifier = Modifier.fillMaxSize())
+            }
+
         },
         transitionSpec = {
             slideInHorizontally { it } + fadeIn() togetherWith

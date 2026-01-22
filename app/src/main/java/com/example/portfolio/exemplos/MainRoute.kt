@@ -93,6 +93,12 @@ sealed interface Route : NavKey {
 
         @Serializable
         data object SliderExample : Route
+
+        @Serializable
+        data object AnimatedGradientBackground : Route
+
+        @Serializable
+        data object MovingGradientBackground : Route
     }
 
     @Serializable
@@ -284,6 +290,15 @@ val projectsStateItems = persistentListOf(
         "Slider",
         "Slider",
         Route.MainHome.SliderExample
+    ),
+    ProjectModel(
+        "AnimatedGradientBackground",
+        "AnimatedGradientBackground",
+        Route.MainHome.AnimatedGradientBackground
+    ),
+    ProjectModel(
+        "MovingGradientBackground",
+        "MovingGradientBackground",
+        Route.MainHome.MovingGradientBackground
     )
-
 )

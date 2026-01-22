@@ -45,7 +45,6 @@ val images = listOf(
     R.drawable.p4,
 )
 
-
 @Composable
 fun SliderScreen() {
     Surface(
