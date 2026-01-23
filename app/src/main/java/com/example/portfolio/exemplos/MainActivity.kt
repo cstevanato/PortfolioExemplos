@@ -53,8 +53,8 @@ class MainActivity : ComponentActivity() {
 //+        test01()
         setContent {
             PortfolioExemplosTheme {
-                AnimatedSemiCircular()
-//               BasicNavigation()
+
+               BasicNavigation()
 //                NavigateTest()
             }
         }

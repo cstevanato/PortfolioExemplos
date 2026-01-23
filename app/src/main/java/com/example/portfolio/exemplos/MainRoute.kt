@@ -99,6 +99,9 @@ sealed interface Route : NavKey {
 
         @Serializable
         data object MovingGradientBackground : Route
+
+        @Serializable
+        data object AnimateSemiCircleTimer : Route
     }
 
     @Serializable
@@ -300,5 +303,10 @@ val projectsStateItems = persistentListOf(
         "MovingGradientBackground",
         "MovingGradientBackground",
         Route.MainHome.MovingGradientBackground
+    ),
+    ProjectModel (
+        "AnimateSemiCircleTimer",
+        "AnimateSemiCircleTimer",
+        Route.MainHome.AnimateSemiCircleTimer
     )
 )

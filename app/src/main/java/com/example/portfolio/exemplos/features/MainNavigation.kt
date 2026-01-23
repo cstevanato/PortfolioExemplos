@@ -16,6 +16,7 @@ import com.example.portfolio.exemplos.HomeScreen
 import com.example.portfolio.exemplos.Route
 import com.example.portfolio.exemplos.features.animation.AnimatedCircularProgressScreen
 import com.example.portfolio.exemplos.features.animation.AnimatedGradientBackgroundCore
+import com.example.portfolio.exemplos.features.animation.AnimatedSemiCircular
 import com.example.portfolio.exemplos.features.animation.AnimationScreen
 import com.example.portfolio.exemplos.features.animation.AnimationsListScreen
 import com.example.portfolio.exemplos.features.animation.MovingGradientBackgroundCore
@@ -149,6 +150,9 @@ fun MainNavigation(
             }
             entry<Route.MainHome.MovingGradientBackground> {
                 MovingGradientBackgroundCore(modifier = Modifier.fillMaxSize())
+            }
+            entry<Route.MainHome.AnimateSemiCircleTimer> {
+                AnimatedSemiCircular()
             }
 
         },
