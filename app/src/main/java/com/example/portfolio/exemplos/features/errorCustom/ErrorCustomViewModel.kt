@@ -1,8 +1,7 @@
 package com.example.portfolio.exemplos.features.errorCustom
 
-import androidx.compose.runtime.getValue
+import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.portfolio.exemplos.features.errorCustom.error.CustomError
@@ -16,8 +15,8 @@ class ErrorCustomViewModel @Inject constructor() : ViewModel() {
 
     private val errorCustomRepository = ErrorCustomRepository()
 
-    var mainError by mutableStateOf<CustomError?>(null)
-        private set
+    private val _mainError = mutableStateOf<CustomError?>(null)
+    val mainError: State<CustomError?> = _mainError
 
 
     fun getData() {
@@ -25,9 +24,9 @@ class ErrorCustomViewModel @Inject constructor() : ViewModel() {
             try {
                 val result = errorCustomRepository.fetchData(true)
             } catch (e: CustomException) {
-                mainError = e.mapToCustomError()
+                _mainError.value = e.mapToCustomError()
             } catch (e: Exception) {
-                mainError = CustomError.GeneralError(e.localizedMessage)
+                _mainError.value = CustomError.GeneralError(e.localizedMessage)
             } finally {
                 processError()
             }
@@ -35,7 +34,7 @@ class ErrorCustomViewModel @Inject constructor() : ViewModel() {
     }
 
     private fun processError() {
-        when (mainError) {
+        when (mainError.value) {
 //            CustomError.AnotherSpecificError -> TODO()
 //            is CustomError.GeneralError -> TODO()
             CustomError.NoNetworkConnection -> {}

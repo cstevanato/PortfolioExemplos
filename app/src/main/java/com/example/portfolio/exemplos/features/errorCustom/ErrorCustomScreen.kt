@@ -7,6 +7,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.example.portfolio.exemplos.features.errorCustom.error.CustomError
@@ -21,7 +22,7 @@ fun ErrorExampleScreen(
         contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
         modifier = Modifier.fillMaxSize()
     ) { paddingValues ->
-        val errorState : CustomError? = viewModel.mainError
+        val errorState by viewModel.mainError
         Column(modifier = Modifier
             .fillMaxSize()
             .padding(paddingValues)) {
@@ -31,10 +32,10 @@ fun ErrorExampleScreen(
                         Text("Check your internet connection")
                     }
                     is CustomError.AnotherSpecificError -> {
-                        Text("AnotherSpecificError error")
+                        Text("AnotherSpecificError")
                     }
                     is CustomError.GeneralError -> {
-                        Text("GeneralError error")
+                        Text("GeneralError")
                     }
                 }
             }
