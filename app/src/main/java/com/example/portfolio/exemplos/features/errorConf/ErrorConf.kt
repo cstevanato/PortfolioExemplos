@@ -2,8 +2,6 @@ package com.example.portfolio.exemplos.features.errorConf
 
 import kotlinx.serialization.json.Json
 
-data class User(val name: String)
-
 class NetworkException : Exception()
 class ParsingException : Exception()
 class ValidationException(val reason: String) : Exception(reason)

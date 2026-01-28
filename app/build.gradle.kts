@@ -107,7 +107,9 @@ kotlin {
             "-XXLanguage:+PropertyParamAnnotationDefaultTargetMode",
             "-Xjvm-default=all",
             "-Xopt-in=kotlin.RequiresOptIn",
-            "-Xcontext-parameters"
+            "-Xcontext-parameters",
+            "-Xdata-flow-based-exhaustiveness", // When
+            "-Xallow-condition-implies-return-contracts" // contracts
         )
     }
 }

@@ -32,6 +32,7 @@ import com.example.portfolio.exemplos.features.animation.AnimatedGradientBackgro
 import com.example.portfolio.exemplos.features.animation.AnimatedSemiCircular
 import com.example.portfolio.exemplos.features.animation.MovingGradientBackground
 import com.example.portfolio.exemplos.features.animation.MovingGradientBackgroundCore
+import com.example.portfolio.exemplos.features.bottomsheets.BottomSheetScaffoldScreen
 import com.example.portfolio.exemplos.features.flowlayouts.callMain
 import com.example.portfolio.exemplos.ui.theme.PortfolioExemplosTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -55,8 +56,8 @@ class MainActivity : ComponentActivity() {
 //        callMain()
         setContent {
             PortfolioExemplosTheme {
-
-               BasicNavigation()
+                BottomSheetScaffoldScreen()
+//               BasicNavigation()
 //                NavigateTest()
             }
         }
