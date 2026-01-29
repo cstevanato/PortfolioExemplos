@@ -109,7 +109,8 @@ kotlin {
             "-Xopt-in=kotlin.RequiresOptIn",
             "-Xcontext-parameters",
             "-Xdata-flow-based-exhaustiveness", // When
-            "-Xallow-condition-implies-return-contracts" // contracts
+            "-Xallow-condition-implies-return-contracts", // contracts
+            "-XXLanguage:+ExplicitBackingFields"
         )
     }
 }
