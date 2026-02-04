@@ -24,6 +24,7 @@ class UserViewModel @Inject constructor(
     val events = eventChannel.receiveAsFlow()
 
     fun onRegisterClick(password: String) {
+        // Validar
         when (val result = userDataValidator.validatePassword(password)) {
             is Result.Success -> {
 
@@ -39,6 +40,7 @@ class UserViewModel @Inject constructor(
             }
         }
 
+        // Chamar funções
         viewModelScope.launch {
             when (val result = authRepository.register(password)) {
                 is Result.Success -> {
