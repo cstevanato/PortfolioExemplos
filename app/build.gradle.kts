@@ -152,6 +152,10 @@ dependencies {
 
     implementation(libs.kotlinx.collections.immutable)
 
+    // arrow
+    implementation(platform(libs.arrow.stack))
+    // Add specific components as needed, e.g., arrow-core
+    implementation(libs.arrow.core)
     // hilt
     implementation(libs.androidx.hilt.navigation.compose)
 

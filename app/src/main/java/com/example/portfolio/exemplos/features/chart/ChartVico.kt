@@ -59,20 +59,6 @@ val mockDataList = listOf(
     ChartData(LocalDateTime.of(2023, 10, 27, 12, 0), 100f),
     ChartData(LocalDateTime.of(2023, 10, 27, 13, 0), 55f),
     ChartData(LocalDateTime.of(2023, 10, 27, 14, 0), 60f),
-    ChartData(LocalDateTime.of(2023, 10, 27, 8, 0), 20f),
-    ChartData(LocalDateTime.of(2023, 10, 27, 9, 0), 45f),
-    ChartData(LocalDateTime.of(2023, 10, 27, 10, 0), 28f),
-    ChartData(LocalDateTime.of(2023, 10, 27, 11, 0), 80f),
-    ChartData(LocalDateTime.of(2023, 10, 27, 12, 0), 100f),
-    ChartData(LocalDateTime.of(2023, 10, 27, 13, 0), 55f),
-    ChartData(LocalDateTime.of(2023, 10, 27, 14, 0), 60f),
-    ChartData(LocalDateTime.of(2023, 10, 27, 8, 0), 20f),
-    ChartData(LocalDateTime.of(2023, 10, 27, 9, 0), 45f),
-    ChartData(LocalDateTime.of(2023, 10, 27, 10, 0), 28f),
-    ChartData(LocalDateTime.of(2023, 10, 27, 11, 0), 80f),
-    ChartData(LocalDateTime.of(2023, 10, 27, 12, 0), 100f),
-    ChartData(LocalDateTime.of(2023, 10, 27, 13, 0), 55f),
-    ChartData(LocalDateTime.of(2023, 10, 27, 14, 0), 60f)
 )
 
 @Composable

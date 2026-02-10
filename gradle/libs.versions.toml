@@ -1,5 +1,6 @@
 [versions]
 agp = "9.0.0"
+arrowStackVersion = "2.2.1.1"
 composeMultiplatformMediaPlayerVersion = "1.0.52"
 firebaseBomVersion = "34.8.0"
 kotlin = "2.3.0"
@@ -40,6 +41,8 @@ kotlin-metadata-jvm = "2.3.0"
 androidx-multidex = { module = "androidx.multidex:multidex", version.ref = "multidex" }
 
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+arrow-core = { module = "io.arrow-kt:arrow-core" }
+arrow-stack = { module = "io.arrow-kt:arrow-stack", version.ref = "arrowStackVersion" }
 compose-multiplatform-media-player = { module = "network.chaintech:compose-multiplatform-media-player", version.ref = "composeMultiplatformMediaPlayerVersion" }
 firebase-analytics = { module = "com.google.firebase:firebase-analytics" }
 firebase-auth = { module = "com.google.firebase:firebase-auth" }

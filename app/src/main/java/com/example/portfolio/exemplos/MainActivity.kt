@@ -47,6 +47,7 @@ data object ScreenB : NavKey
 @kotlinx.serialization.Serializable
 data object ScreenC : NavKey
 
+
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
@@ -54,12 +55,12 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 //        execExamples()
-//+        test01()
+//        test01()
 //        callMain()
         setContent {
             PortfolioExemplosTheme {
-                BottomSheetScaffoldScreen()
-//               BasicNavigation()
+//                BottomSheetScaffoldScreen()
+               BasicNavigation()
 //                NavigateTest()
             }
         }
