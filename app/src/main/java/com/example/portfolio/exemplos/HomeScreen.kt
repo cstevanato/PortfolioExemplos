@@ -59,7 +59,6 @@ fun HomeScreen(
             ) { index ->
                 val project = state[index]
                 val key = project.name.replace("\\W+".toRegex(), "_")
-                println("Claudio")
                 println("key: item_projects_$key")
                 CardMenu(
                     model = CardModel(project.name, project.description),

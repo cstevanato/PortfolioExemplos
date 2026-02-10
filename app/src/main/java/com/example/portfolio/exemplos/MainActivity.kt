@@ -35,6 +35,7 @@ import com.example.portfolio.exemplos.features.animation.MovingGradientBackgroun
 import com.example.portfolio.exemplos.features.bottomsheets.BottomSheetScaffoldScreen
 import com.example.portfolio.exemplos.features.execExamples
 import com.example.portfolio.exemplos.features.flowlayouts.callMain
+import com.example.portfolio.exemplos.features.kotlin.Example_1_Main
 import com.example.portfolio.exemplos.ui.theme.PortfolioExemplosTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -57,6 +58,8 @@ class MainActivity : ComponentActivity() {
 //        execExamples()
 //        test01()
 //        callMain()
+
+        Example_1_Main()
         setContent {
             PortfolioExemplosTheme {
 //                BottomSheetScaffoldScreen()
