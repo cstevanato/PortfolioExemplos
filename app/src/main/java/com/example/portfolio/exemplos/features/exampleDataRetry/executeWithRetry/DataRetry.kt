@@ -1,4 +1,4 @@
-package com.example.portfolio.exemplos.features.exampleDataRetry
+package com.example.portfolio.exemplos.features.exampleDataRetry.executeWithRetry
 
 
 import io.ktor.client.HttpClient
@@ -17,7 +17,6 @@ import kotlinx.coroutines.withContext
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
-import org.jetbrains.annotations.Async
 import java.net.UnknownHostException
 import kotlin.coroutines.cancellation.CancellationException
 
