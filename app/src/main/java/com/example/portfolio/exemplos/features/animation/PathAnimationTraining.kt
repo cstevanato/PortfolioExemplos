@@ -17,12 +17,10 @@ import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.StrokeJoin
 import androidx.compose.ui.graphics.drawscope.Fill
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.graphics.drawscope.withTransform
 import androidx.compose.ui.graphics.vector.PathParser
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.graphics.drawscope.withTransform
-import androidx.compose.ui.graphics.vector.toPath
-import org.checkerframework.checker.units.qual.degrees
 import kotlin.math.PI
 import kotlin.math.cos
 import kotlin.math.sin
@@ -461,8 +459,16 @@ fun QuadraticTrainingEffect4() {
     }
 
     Canvas(modifier = Modifier.size(100.dp)) {
+        val canvasWidth = size.width
+        val canvasHeight = size.height
+
         withTransform({
-            scale(scaleX = 1f, scaleY = 1f)
+            // Centralizar o path
+            translate(
+                left = (canvasWidth ) / 2f,
+                top = (canvasHeight ) / 2f
+            )
+            scale(scaleX = 1.5f, scaleY = 1.5f)
         }) {
             drawPath(
                 path = path,
