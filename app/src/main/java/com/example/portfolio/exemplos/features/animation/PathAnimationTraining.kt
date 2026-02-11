@@ -446,6 +446,44 @@ fun TrianguloRetanguloEffect() {
 
 @Preview
 @Composable
+fun QuadraticTrainingEffect4() {
+    val path = Path()
+    path.moveTo(10f, 75f)
+    path.quadraticTo(
+        x1 = 50f, y1 = -50f,
+        x2 = 90f, y2 = 75f
+    )
+
+    val shape = Path().apply {
+        addOval(
+            oval = Rect(Offset.Zero, 2f)
+        )
+    }
+
+    Canvas(modifier = Modifier.size(100.dp)) {
+        withTransform({
+            scale(scaleX = 1f, scaleY = 1f)
+        }) {
+            drawPath(
+                path = path,
+                color = Color.Blue,
+                style = Stroke(
+
+                    pathEffect = PathEffect.stampedPathEffect(
+                        shape = shape,
+                        advance = 7f,
+                        phase = 364f,
+                        style = StampedPathEffectStyle.Translate
+                    )
+                )
+            )
+        }
+    }
+}
+
+
+@Preview
+@Composable
 fun QuadraticTrainingEffect() {
     val path = Path()
     path.moveTo(10f, 75f)
@@ -460,12 +498,61 @@ fun QuadraticTrainingEffect() {
         )
     }
 
-    Canvas(modifier = Modifier.size(80.dp, 80.dp)) {
+    Canvas(modifier = Modifier.size(100.dp)) {
+        val canvasWidth = size.width
+        val canvasHeight = size.height
+
+        val pathBounds = path.getBounds()
+
+        withTransform({
+            translate(
+                left = (canvasWidth - pathBounds.width) / 2f - pathBounds.left,
+                top = (canvasHeight - pathBounds.height) / 2f - pathBounds.top
+            )
+        }) {
+            drawPath(
+                path = path,
+                color = Color.Blue,
+                style = Stroke(
+                    pathEffect = PathEffect.stampedPathEffect(
+                        shape = shape,
+                        advance = 7f,
+                        phase = 364f,
+                        style = StampedPathEffectStyle.Translate
+                    )
+                )
+            )
+        }
+    }
+}
+
+@Preview
+@Composable
+fun QuadraticTrainingEffect1() {
+    val shape = Path().apply {
+        addOval(
+            oval = Rect(Offset.Zero, 2f)
+        )
+    }
+
+    Canvas(modifier = Modifier.size(100.dp)) {
+        val canvasWidth = size.width
+        val canvasHeight = size.height
+
+        val path = Path().apply {
+            moveTo(canvasWidth * 0.1f, canvasHeight * 0.75f)
+            quadraticTo(
+                x1 = canvasWidth * 0.5f,
+                y1 = canvasHeight * 0.25f,
+                x2 = canvasWidth * 0.9f,
+                y2 = canvasHeight * 0.75f
+            )
+        }
+
         drawPath(
             path = path,
             color = Color.Blue,
             style = Stroke(
-
                 pathEffect = PathEffect.stampedPathEffect(
                     shape = shape,
                     advance = 7f,
@@ -474,5 +561,49 @@ fun QuadraticTrainingEffect() {
                 )
             )
         )
+    }
+}
+
+@Preview
+@Composable
+fun QuadraticTrainingEffect3() {
+    val path = Path()
+    path.moveTo(10f, 75f)
+    path.quadraticTo(
+        x1 = 50f, y1 = -50f,
+        x2 = 90f, y2 = 75f
+    )
+
+    val shape = Path().apply {
+        addOval(
+            oval = Rect(Offset.Zero, 2f)
+        )
+    }
+
+    Canvas(modifier = Modifier.size(100.dp)) {
+        val canvasWidth = size.width
+        val canvasHeight = size.height
+
+        withTransform({
+            // Centralizar o path
+            translate(
+                left = (canvasWidth - 90f) / 2f,
+                top = (canvasHeight - 75f) / 2f + 50f
+            )
+            scale(scaleX = 1f, scaleY = 1f)
+        }) {
+            drawPath(
+                path = path,
+                color = Color.Blue,
+                style = Stroke(
+                    pathEffect = PathEffect.stampedPathEffect(
+                        shape = shape,
+                        advance = 7f,
+                        phase = 364f,
+                        style = StampedPathEffectStyle.Translate
+                    )
+                )
+            )
+        }
     }
 }
