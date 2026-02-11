@@ -161,6 +161,7 @@ dependencies {
 
     //dagger
     implementation(libs.dagger.hilt)
+    implementation(libs.androidx.ui)
     ksp(libs.dagger.ksp)
 
     ksp(libs.kotlin.metadata.jvm)

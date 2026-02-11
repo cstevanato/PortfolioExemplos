@@ -36,6 +36,7 @@ screenshot = "0.0.1-alpha13"
 vico = "2.4.1"
 
 kotlin-metadata-jvm = "2.3.0"
+uiVersion = "1.10.2"
 
 [libraries]
 androidx-multidex = { module = "androidx.multidex:multidex", version.ref = "multidex" }
@@ -100,6 +101,7 @@ androidx-compose-runtime = { group = "androidx.compose.runtime", name = "runtime
 kotlin-metadata-jvm = { group = "org.jetbrains.kotlin", name = "kotlin-metadata-jvm", version.ref = "kotlin" }
 
 screenshot-validation-api = { group = "com.android.tools.screenshot", name = "screenshot-validation-api", version.ref = "screenshot"}
+androidx-ui = { group = "androidx.compose.ui", name = "ui", version.ref = "uiVersion" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
