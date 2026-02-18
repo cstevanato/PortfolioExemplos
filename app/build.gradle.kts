@@ -2,6 +2,7 @@ import com.google.firebase.appdistribution.gradle.firebaseAppDistribution
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import java.io.FileInputStream
 import java.util.Properties
+import com.android.build.api.dsl.ApplicationExtension
 
 plugins {
     alias(libs.plugins.android.application)
@@ -20,9 +21,14 @@ localProperties.load(FileInputStream(localPropertiesFile))
 
 val _appId = localProperties.getProperty("FIREBASE_APP_ID").replace("\"", "")
 
-android {
+extensions.configure<ApplicationExtension> {
     namespace = "com.example.portfolio.exemplos"
-    compileSdk = 36
+    compileSdk {
+        version = release(36) {
+            minorApiLevel = 1
+        }
+    }
+
 
     defaultConfig {
         applicationId = "com.example.portfolio.exemplos"
