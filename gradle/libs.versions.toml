@@ -1,5 +1,5 @@
 [versions]
-agp = "9.0.0"
+agp = "9.0.1"
 arrowStackVersion = "2.2.1.1"
 composeMultiplatformMediaPlayerVersion = "1.0.52"
 firebaseBomVersion = "34.8.0"

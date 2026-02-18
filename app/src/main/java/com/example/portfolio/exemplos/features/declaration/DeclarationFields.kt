@@ -7,6 +7,9 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
+
+data class UserParameter(val name: String, val password: String)
+
 class DeclarationFields(
     val id: Int,
     manager: String
@@ -17,8 +20,16 @@ class DeclarationFields(
     val dogs: List<String>
         field : MutableList<String> = mutableListOf<String>()
 
+    // TODO("Importante")
     val user: StateFlow<String>
         field = MutableStateFlow<String>("Teste")
+
+    // StateFlow para manipular UserParameter
+//    private val _userParameterStateFlow = MutableStateFlow(UserParameter(name = "", password = ""))
+//    val userParameterStateFlow: StateFlow<UserParameter> = _userParameterStateFlow
+
+    val userParameterStateFlow: StateFlow<UserParameter>
+        field =  MutableStateFlow(UserParameter(name = "", password = ""))
 
 
     fun onManagerChange(manager: String) {
@@ -34,6 +45,9 @@ class DeclarationFields(
         dogs.add(dog)
     }
 
+    fun updateUserParameter(name: String, password: String) {
+        userParameterStateFlow.value = UserParameter(name, password)
+    }
 }
 
 fun main() {
